@@ -8,17 +8,17 @@ public:
     {
         std::cout << "Object::OnInit()" << std::endl;
     }
+    
 };
 
 class User : public Object
 {
 public:
-    bool get_changepwd() const
+  virtual void OnInit() override
     {
-        return changepwd;
-    }
-private:
-    bool changepwd = false;
+         Object::OnInit();
+        std::cout << "User::OnInit()" << std::endl;
+    } 
 };
 
 class AlexUser : public User
@@ -29,8 +29,6 @@ public:
         User::OnInit();
         std::cout << "AlexUser::OnInit()" << std::endl;
     }
-private: 
-    bool changepwd = true;
 };
 
 
@@ -38,12 +36,13 @@ int main()
 {
     Object o;
     o.OnInit();
+    std::cout << std::endl;
 
     User u;
     u.OnInit();
-
-    assert( u.get_changepwd() == true );
+    std::cout << std::endl;
 
     AlexUser au;
     au.OnInit();
+    std::cout << std::endl;
 }
