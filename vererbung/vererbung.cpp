@@ -14,8 +14,9 @@ public:
 class User : public Object
 {
 public:
-  virtual void OnInit() override
-    {
+    bool change_pwd = false;
+    virtual void OnInit() override
+    {   change_pwd = true;
          Object::OnInit();
         std::cout << "User::OnInit()" << std::endl;
     } 
@@ -41,6 +42,7 @@ int main()
     User u;
     u.OnInit();
     std::cout << std::endl;
+    assert( u.change_pwd == true );
 
     AlexUser au;
     au.OnInit();

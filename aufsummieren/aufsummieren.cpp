@@ -2,6 +2,7 @@
 
 int aufsummierenFor( int x )
 {
+    return 0;
 }
 
 int main()
