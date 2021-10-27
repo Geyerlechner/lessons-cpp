@@ -14,11 +14,10 @@ int aufsummierenFor( int x )
 
 int aufsummierenWhile( int x )
 {
-    int i = 0;
     int summe = 0;
 
-    while(i++ < x){
-        summe += i;
+    while(x > 0){
+        summe += x--;
       
     }
 
