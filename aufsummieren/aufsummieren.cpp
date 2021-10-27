@@ -4,23 +4,25 @@
 
 int aufsummierenFor( int x )
 {
-    int left = 0;
-    int right = 0;
+    int summe = 0;
 
-   // 1 2 3 4 5
-   // 1 3 6 10 15
-    for ( auto i = 0; i < x; i++ )
-    {   
-        right = (left + right + 1);
-        left = (left + 1);
-        std::cout << right << " | ";
-    }
-    std::cout << std::endl;
-    return right;
+    for ( auto i = 0; i < x; ++i )
+        summe += i + 1;
+   
+    return summe;
 }
+
 int aufsummierenWhile( int x )
 {
-    return 0;
+    int i = 0;
+    int summe = 0;
+
+    while(i++ < x){
+        summe += i;
+      
+    }
+
+    return summe;
 }
 
 int aufsummierenRecursion( int x )
@@ -33,26 +35,14 @@ int aufsummierenRecursion( int x )
 
 int main()
 {
-    // aufsummierenFor( 5 ); 
-   // int links = 0;
-   // int rechts = 0;
-   // int summe;
 
-   //// 1 2 3 4 5
-   //// 3 6 10 15
-   // for ( auto i = 0; i < 5; i++ )
-   // {   
-   //     rechts = (links + rechts + 1);
-   //     links = (links + 1);
-   //     summe = links + rechts;
-   // }
-   //    std::cout << "Summe: " <<  rechts;
-
-   // aufsummierenFor(5);
-  
-    assert( aufsummierenFor( 5 ) == 15 );
+  /*assert( aufsummierenFor( 5 ) == 15 );
     assert( aufsummierenFor( 8 ) == 36 );
     assert( aufsummierenFor( 10 ) == 55 );
-    //assert( aufsummierenWhile( 5 ) == 15 );
-    //assert( aufsummierenRecursion( 5 ) == 15 );
+  */  
+     assert( aufsummierenWhile( 5 ) == 15 );
+     assert( aufsummierenWhile( 8 ) == 36 );
+     assert( aufsummierenWhile( 10 ) == 55 );
+
+     //assert( aufsummierenRecursion( 5 ) == 15 );
 }
