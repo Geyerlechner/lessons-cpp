@@ -35,13 +35,13 @@ int aufsummierenRecursion( int x )
 int main()
 {
 
-  /*assert( aufsummierenFor( 5 ) == 15 );
-    assert( aufsummierenFor( 8 ) == 36 );
-    assert( aufsummierenFor( 10 ) == 55 );
-  */  
-     assert( aufsummierenWhile( 5 ) == 15 );
-     assert( aufsummierenWhile( 8 ) == 36 );
-     assert( aufsummierenWhile( 10 ) == 55 );
+    //assert( aufsummierenFor( 5 ) == 15 );
+    //assert( aufsummierenFor( 8 ) == 36 );
+    //assert( aufsummierenFor( 10 ) == 55 );
+    //
+    // assert( aufsummierenWhile( 5 ) == 15 );
+    // assert( aufsummierenWhile( 8 ) == 36 );
+    // assert( aufsummierenWhile( 10 ) == 55 );
 
-     //assert( aufsummierenRecursion( 5 ) == 15 );
+    // assert( aufsummierenRecursion( 5 ) == 15 );
 }
