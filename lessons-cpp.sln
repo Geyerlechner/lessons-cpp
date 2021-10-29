@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vererbung", "vererbung\vere
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eingabe", "Eingabe\Eingabe.vcxproj", "{4B9BC120-D2D0-4D04-92B7-D733C7853F46}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "for_loop_variants", "for_loop_variants\for_loop_variants.vcxproj", "{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{4B9BC120-D2D0-4D04-92B7-D733C7853F46}.Release|x64.Build.0 = Release|x64
 		{4B9BC120-D2D0-4D04-92B7-D733C7853F46}.Release|x86.ActiveCfg = Release|Win32
 		{4B9BC120-D2D0-4D04-92B7-D733C7853F46}.Release|x86.Build.0 = Release|Win32
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Debug|x64.ActiveCfg = Debug|x64
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Debug|x64.Build.0 = Debug|x64
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Debug|x86.ActiveCfg = Debug|Win32
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Debug|x86.Build.0 = Debug|Win32
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Release|x64.ActiveCfg = Release|x64
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Release|x64.Build.0 = Release|x64
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Release|x86.ActiveCfg = Release|Win32
+		{BA8F234B-A66A-4256-A61F-E2A33A8B5EE4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
