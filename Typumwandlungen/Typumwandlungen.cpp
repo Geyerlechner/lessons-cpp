@@ -17,20 +17,21 @@ int main()
               << i2 << std::endl;
 
     std::cout << std::endl;
-
-    double dc;
-    std::cout << "Eingabe: ";
-    std::cin >> dc;
-    double df = 9/5 * dc + 32;
-
-    std::cout << "Wert 1: " << df;
-
-    std::cout << std::endl;
+    
+    //
+    //double dc;
+    //std::cout << "Eingabe: ";
+    //std::cin >> dc;
+    //double df = 9/5 * dc + 32;
+    //
+    //std::cout << "Wert 1: " << df;
+    //
+    //std::cout << std::endl;
 
     double dc;
     std::cout << "Eingabe 2: ";
     std::cin >> dc;
-    double df = 9.0 / 5 * dc + 32; //Besser
+    double df = 9.0 / 5 * dc + 32; // Besser
 
     std::cout << "Wert 2: " << df;
 
