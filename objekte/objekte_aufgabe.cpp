@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 struct brief
 {
 	std::string first_name;

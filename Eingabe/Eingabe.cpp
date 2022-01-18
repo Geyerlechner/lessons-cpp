@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-
+#include <vector>
 //Seite: 94 -  98
  
 //Seite: 101
@@ -22,13 +22,14 @@ void lesson_1()
               << " Alter: " 
               <<  alter     << std::endl;
 }
+
 //Seite: 101
 void lesson_2()
 {
     std::cout << "Geben Sie einen Gleitkommawert ein: ";
     double n;
     std::cin >> n;
-
+    
     std::cout << "Ausgabe: " << sqrt(n);
 }
 //Seite: 101
@@ -41,9 +42,32 @@ void lesson_3()
 
     std::cout << "Hallo " << first << " " << last;
 }
+void shiftright (int myarray[], int size)
+{
+  for (int i=0; i<size; i++)
+  {
+    myarray[i] ;
+  }
+}
+
+template <typename t> void move(std::vector<t>& v, size_t oldIndex, size_t newIndex)
+{
+    if (oldIndex > newIndex)
+        std::rotate(v.rend() - oldIndex - 1, v.rend() - oldIndex, v.rend() - newIndex);
+    else        
+        std::rotate(v.begin() + oldIndex, v.begin() + oldIndex + 1, v.begin() + newIndex + 1);
+}
 
 int main()
 {
-   
+    std::vector<int> v{ 1, 2, 3, 4, 5 };  
+
+    move(v, 2, v.size()-1);
+    move(v, 1, v.size()-1);
+
+    for ( auto e : v )
+    {
+        std::cout << e << " ";
+    }
 
 }
