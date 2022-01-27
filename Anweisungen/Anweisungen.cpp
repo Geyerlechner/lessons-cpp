@@ -1,5 +1,7 @@
 #include <iostream>
 
+enum MONEY { EURO, DOLLAR };
+
 void ifAnweisung()
 {
 	int a, b;
@@ -33,7 +35,24 @@ void InchToCM(double input, const std::string to)
 	}
 }
 
+double EuroToDollar(double money, enum MONEY type)
+{
+	
+	if( type == EURO )
+	{
+		return money * 1.13;
+	}
+	else if( type== DOLLAR )
+	{
+		return money / 1.13;
+	}
+	 
+	return 0;
+}
+
 int main()
 {
-	InchToCM(2.5, "cm");
+	// InchToCM(2.5, "cm");
+	
+	std::cout << EuroToDollar(16.95, EURO);
 }
