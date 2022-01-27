@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aufsummieren", "aufsummieren\aufsummieren.vcxproj", "{D0249EF7-165B-4906-8F06-9DFDF0D57EB7}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Typumwandlungen", "Typumwandlungen\Typumwandlungen.vcxproj", "{7CDDC258-3B80-4305-AD9A-89495891D74E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Anweisungen", "Anweisungen\Anweisungen.vcxproj", "{245210C5-DACB-4F5D-98F0-881FB44796C8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vektor", "Vektor\Vektor.vcxproj", "{67C186DB-F764-47C3-B7AD-B169D1846B9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,14 @@ Global
 		{245210C5-DACB-4F5D-98F0-881FB44796C8}.Release|x64.Build.0 = Release|x64
 		{245210C5-DACB-4F5D-98F0-881FB44796C8}.Release|x86.ActiveCfg = Release|Win32
 		{245210C5-DACB-4F5D-98F0-881FB44796C8}.Release|x86.Build.0 = Release|Win32
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Debug|x64.ActiveCfg = Debug|x64
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Debug|x64.Build.0 = Debug|x64
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Debug|x86.ActiveCfg = Debug|Win32
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Debug|x86.Build.0 = Debug|Win32
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Release|x64.ActiveCfg = Release|x64
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Release|x64.Build.0 = Release|x64
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Release|x86.ActiveCfg = Release|Win32
+		{67C186DB-F764-47C3-B7AD-B169D1846B9E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
