@@ -99,3 +99,38 @@ void vector_leesion3()
 	}
 }
 
+void vector_leesion4()
+{
+
+	double InputValue = 0;
+	int units;
+	
+	auto unit = [](double InputValue, int units){
+		
+		switch(units)
+		{
+		case 0:
+			std::cout << InputValue * 100;
+			break;
+		case 1:
+			std::cout << InputValue / 100;
+			break;
+		case 2:
+			std:: cout << 1 * 2.54; 
+			break;
+		case 3:
+			std::cout << 1 * 12; 
+			break;
+		default: 
+			std::cout << "Keine gueltige Eingabe";
+		}
+
+	};
+
+	std::cout << "Eingabe ( cm = 0, m = 1, in = 2, ft = 3 ): ";
+	std::cin >> units;
+	std::cin >> InputValue;	
+	unit(InputValue, units);
+
+
+}
