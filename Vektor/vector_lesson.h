@@ -67,3 +67,35 @@ void vector_lesson2()
 	}
 
 }
+
+void vector_leesion3()
+{
+	double number1 = 0;
+	double number2 = 0;
+
+	std::cout << "Geben Sie eine Zahl ein: ";
+	while( std::cin >> number1 )
+	{
+		if( number1 == 000 )
+			break;
+
+		std::cout << "Geben Sie eine 2 Zahl ein: ";
+		std::cin >> number2;
+
+		std::cout << "Ausgabe: ";
+
+		if( number1 > number2 )
+		{
+			std::cout << "Die erste eingabe ist groesser als die Zweite " << number1 << std::endl;
+		}else if ( number1 == number2 )
+		{
+			std::cout << "Die beiden Zahlen sind gleich" << std::endl;
+		} else
+		{
+			std::cout << "Die zweite eingabe ist groesser als die erste " << number2 << std::endl;
+		}
+
+		std::cout << "Eingabe: ";
+	}
+}
+

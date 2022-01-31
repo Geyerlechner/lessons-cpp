@@ -2,7 +2,8 @@
 
 int main()
 {
-	vector_lesson2();
+ //	vector_lesson2();
 
+	return 0;
 }
 
