@@ -6,7 +6,7 @@ int main()
  // vector_leeson3();
  // vector_lesson4();
 //	vector_lesson5();
-	vector_lesson6();
+	vector_lesson7();
 	return 0;
 }
 

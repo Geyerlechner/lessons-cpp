@@ -203,8 +203,33 @@ void vector_lesson6()
 		}
 
 	}
+}
 
+void vector_lesson7()
+{
+	double value1 = 0;
+	double value2 = 0;
+	char unit;
+	std::cout << "Taschenrechner\n";
+	std::cout << "Wert 1: ";
+	std::cin>>value1;
+	std::cout << "Wert 2: ";
+	std::cin>>value2;
 
+	std::cout << "---------------------------------------\nAddition +\nSubtraktion -\nMultiplikation *\n---------------------------------------\nEingabe: ";
+	std::cin>>unit;
 	
+	switch(unit)
+	{
+	case '+':
+		std::cout << "Ergebnis: " << value1 + value2;
+		break;
+	case '-':
+		std::cout << "Ergebnis: " << value1 - value2;
+		break;
+	case '*':
+		std::cout << "Ergebnis: " << value1 * value2;
+		break;
+	}
 
 }
