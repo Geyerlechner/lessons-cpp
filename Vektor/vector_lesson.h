@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <stdio.h>
 #include <ctype.h>
+#include <map>
 
 bool searchBlockList(std::vector<std::string> bocklist, std::string word)
 {
@@ -68,7 +69,7 @@ void vector_lesson2()
 
 }
 
-void vector_leesion3()
+void vector_lesson3()
 {
 	double number1 = 0;
 	double number2 = 0;
@@ -99,38 +100,62 @@ void vector_leesion3()
 	}
 }
 
-void vector_leesion4()
+void vector_lesson4()
 {
-
-	double InputValue = 0;
 	int units;
-	
-	auto unit = [](double InputValue, int units){
-		
+	std::vector<double> values;
+
+	std::cout << "Was wollen Sie in cm umrechnen? \n------------------------------------\n";
+	std::cout << "m  = 0 \nin = 1 \nft = 2 \nPrint & Exit = 3\n------------------------------------\nEingabe: ";
+
+	while( std::cin >> units )
+	{
+		double InputValue = 0;
+
+		auto unity = [&](int value) {
+			
+			switch(value)
+			{
+			case 0: return "m: "; break;
+			case 1: return "in: "; break;
+			case 2: return "ft: "; break;
+			}
+
+		};
+
 		switch(units)
-		{
+		{	
 		case 0:
-			std::cout << InputValue * 100;
+			std::cout << unity(units);
+			std::cin >> InputValue;
+			values.push_back( InputValue * 100 );
 			break;
 		case 1:
-			std::cout << InputValue / 100;
+			std::cout << unity(units);
+			std::cin >> InputValue;
+			values.push_back( InputValue * 2.54 );
 			break;
 		case 2:
-			std:: cout << 1 * 2.54; 
+			std::cout << unity(units);
+			std::cin >> InputValue;
+			values.push_back(InputValue * 30.48 );
 			break;
 		case 3:
-			std::cout << 1 * 12; 
-			break;
+			for(auto &value : values)
+				std::cout << value << " cm" << std::endl;
+			return;
 		default: 
 			std::cout << "Keine gueltige Eingabe";
 		}
 
-	};
+		std::cout << "Eingabe: ";
+		
+	}
 
-	std::cout << "Eingabe ( cm = 0, m = 1, in = 2, ft = 3 ): ";
-	std::cin >> units;
-	std::cin >> InputValue;	
-	unit(InputValue, units);
+
+
+	
+
 
 
 }
