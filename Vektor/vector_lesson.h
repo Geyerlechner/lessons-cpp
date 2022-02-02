@@ -151,11 +151,18 @@ void vector_lesson4()
 		std::cout << "Eingabe: ";
 		
 	}
-
-
-
-	
-
-
-
 }
+
+void vector_lesson5()
+{
+	int value = 0;
+	int t[7] {1, 2, 3, 4, 5, 6, 7 };
+
+	auto size = sizeof(t) / sizeof(t[0]);
+	
+	for (int i = 1; i < size+1; i++)
+		value += i;
+	
+	std::cout << "Zentralwert: " << value / size;
+}
+
