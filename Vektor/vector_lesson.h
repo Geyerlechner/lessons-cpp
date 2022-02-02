@@ -166,3 +166,45 @@ void vector_lesson5()
 	std::cout << "Zentralwert: " << value / size;
 }
 
+void vector_lesson6()
+{
+	int firstUnit = 0;
+	int UserInput = 0;
+	int value = 50;
+	std::cout << "Ist die Zahl grosser als " << value << "? \n-----------------------------\n1 = Ja | 0 = Nein \n-----------------------------\nEingabe: ";
+	std::cin >> firstUnit;
+
+	for (int i = 0; i < 7; i++)
+	{
+
+		if( firstUnit == 1 )
+		{
+			std::cout << "Ist deine Zahl? " << value << "? \n-----------------------------\n1 = Ja | 0 = Nein \n-----------------------------\nEingabe: ";
+			std::cin >> UserInput;
+			if(UserInput == 0)
+			{
+				value += 10;
+			}else{
+				std::cout << "Deine Zahl ist: " << value; 
+				break;
+			}
+
+		}else{
+			std::cout << "Ist deine Zahl? " << value << "? \n-----------------------------\n1 = Ja | 0 = Nein \n-----------------------------\nEingabe: ";
+			std::cin >> UserInput;
+			if(UserInput == 0)
+			{
+				value -= 10;
+			}else{
+				std::cout << "Deine Zahl ist: " << value; 
+				break;
+			}	
+		
+		}
+
+	}
+
+
+	
+
+}
