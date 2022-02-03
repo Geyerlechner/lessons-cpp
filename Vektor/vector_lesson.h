@@ -385,5 +385,43 @@ void vector_lesson11()
 
 void vector_lesson12()
 {
+	std::vector<std::string> names;
+	std::vector<int> score;
+	std::string input;
+	int scoreInput;
+
+	auto print = []()
+	{
+		std::cout << "Geben Sie einen Namen ein: ";
+	};
+
+	print();
+	while(std::cin>>input)
+	{
+		if(input == "Noname") break;
+
+		std::cout << "Geben Sie einen Score ein: ";
+
+		std::cin >> scoreInput;
+
+		if(input != "")
+		{
+			names.push_back(input);
+			score.push_back(scoreInput);
+		}else{
+			std::cout << "Geben Sie einen Namen an!";
+		}
+		print();
+	}
+
+	std::cout << "Ausgabe: " << std::endl;
+
+	int i = -1;
+	for (auto &name : names)
+	{
+		i++;
+		std::cout << "Name: " << name << " Score: " << score.at(i) <<  "\n";
+	}
+
 
 }
