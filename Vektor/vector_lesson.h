@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <map>
+#include <string> 
 
 bool searchBlockList(std::vector<std::string> bocklist, std::string word)
 {
@@ -258,24 +259,33 @@ bool isNumber(const std::string& str)
     return true;
 }
 
+
 void vector_lesson9()
 {	
-	std::map<std::string, int> values { {"eins", 1}, {"zwei", 2}, {"drei", 3}, {"vier", 4}, {"fuenf", 5}, {"sechs", 6}, {"sieben", 7} , {"acht", 8}, {"neun", 9}, {"zehn", 10}  };
+	std::map<std::string, int> values { {"eins", 1},  {"1", 1},	
+										{"zwei", 2},  {"2", 2}, 
+										{"drei", 3},  {"3", 3},
+										{"vier", 4},  {"4", 4},	
+										{"fuenf", 5}, {"5", 5},
+										{"sechs", 6}, {"6", 6},
+										{"sieben", 7},{"7", 7},
+										{"acht", 8},  {"8", 8},	
+										{"neun", 9},  {"9", 9}, 
+										{"zehn", 10}, {"10", 10} };
 	std::string value1;
 	std::string value2;
 	char unit;
-		
+	
 	std::cout << "Taschenrechner\n";
-
+	
 	std::cout << "Wert 1: ";
 	std::cin>> value1;
 	std::cout << "Wert 2: ";
-	std::cin>>value2;
+	std::cin>> value2;
 
 	std::cout << "---------------------------------------\nAddition +\nSubtraktion -\nMultiplikation *\n---------------------------------------\nEingabe: ";
 	std::cin>>unit;
 	
-
 	switch(unit)
 	{
 		case '+': std::cout << "Ergebnis: " << values[value1] + values[value2]; break;
