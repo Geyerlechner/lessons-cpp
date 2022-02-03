@@ -221,15 +221,9 @@ void vector_lesson7()
 	
 	switch(unit)
 	{
-	case '+':
-		std::cout << "Ergebnis: " << value1 + value2;
-		break;
-	case '-':
-		std::cout << "Ergebnis: " << value1 - value2;
-		break;
-	case '*':
-		std::cout << "Ergebnis: " << value1 * value2;
-		break;
+		case '+': std::cout << "Ergebnis: " << value1 + value2; break;
+		case '-': std::cout << "Ergebnis: " << value1 - value2; break;
+		case '*': std::cout << "Ergebnis: " << value1 * value2; break;
 	}
 
 }
@@ -255,3 +249,38 @@ void vector_lesson8()
 
 }
 
+
+bool isNumber(const std::string& str)
+{
+    for (char const &c : str) {
+        if (std::isdigit(c) == 0) return false;
+    }
+    return true;
+}
+
+void vector_lesson9()
+{	
+	std::map<std::string, int> values { {"eins", 1}, {"zwei", 2}, {"drei", 3}, {"vier", 4}, {"fuenf", 5}, {"sechs", 6}, {"sieben", 7} , {"acht", 8}, {"neun", 9}, {"zehn", 10}  };
+	std::string value1;
+	std::string value2;
+	char unit;
+		
+	std::cout << "Taschenrechner\n";
+
+	std::cout << "Wert 1: ";
+	std::cin>> value1;
+	std::cout << "Wert 2: ";
+	std::cin>>value2;
+
+	std::cout << "---------------------------------------\nAddition +\nSubtraktion -\nMultiplikation *\n---------------------------------------\nEingabe: ";
+	std::cin>>unit;
+	
+
+	switch(unit)
+	{
+		case '+': std::cout << "Ergebnis: " << values[value1] + values[value2]; break;
+		case '-': std::cout << "Ergebnis: " << values[value1] - values[value2]; break;
+		case '*': std::cout << "Ergebnis: " << values[value1] * values[value2]; break;
+	}
+
+}
