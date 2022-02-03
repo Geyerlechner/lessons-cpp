@@ -6,6 +6,8 @@
 #include <ctype.h>
 #include <map>
 #include <string> 
+#include <stdlib.h>
+#include <ranges>
 
 bool searchBlockList(std::vector<std::string> bocklist, std::string word)
 {
@@ -292,5 +294,74 @@ void vector_lesson9()
 		case '-': std::cout << "Ergebnis: " << values[value1] - values[value2]; break;
 		case '*': std::cout << "Ergebnis: " << values[value1] * values[value2]; break;
 	}
+
+}
+
+void vector_lesson10()
+{
+	int userInput = 0;
+	int wins = 0;
+	int lost = 0;
+
+	std::cout << "1: Schere, 2: Stein oder 3: Papier?: ";
+
+	while(std::cin>>userInput)
+	{
+		system("cls");
+		std::vector<std::string> name{ "Schere", "Stein", "Papier" };
+
+		srand( time(NULL) ); 
+		int randNum = rand() % 4; 
+		if( randNum == 0 ) randNum = 1;
+
+		std::cout << "Computer: " << name.at(randNum -1 ) << std::endl; 
+
+		switch(userInput){
+	
+		case 1:
+
+			if( randNum == 2 ) {
+				std::cout << "Verloren!";
+				lost++;
+			}else{
+				wins++;
+				std::cout << "Gewonnen";
+			}
+		break;
+
+		case 2:
+
+			if( randNum == 3 ) {
+				lost++;
+				std::cout << "Verloren!";
+			}else{
+				wins++;
+				std::cout << "Gewonnen";
+			}
+		break;
+		case 3:
+
+			if( randNum == 1 ) {
+				lost++;
+				std::cout << "Verloren!";
+			}else{
+				wins++;
+				std::cout << "Gewonnen";
+			}
+
+		break;
+
+
+	}
+
+	std::cout << std::endl;
+	
+	std::cout << "Punktestand: Gewonnen: " << wins << " verloren: " << lost << std::endl;
+	std::cout << "---------------------------------------------------------------\n";
+	std::cout << "1: Schere, 2: Stein oder 3: Papier?: ";
+	}
+
+
+
 
 }
