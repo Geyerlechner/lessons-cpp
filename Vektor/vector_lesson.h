@@ -233,3 +233,25 @@ void vector_lesson7()
 	}
 
 }
+
+void vector_lesson8()
+{
+	int userInput = 0;
+	std::vector<std::string> numbers { "eins", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun", "zehn" };
+ 
+
+	std::cout << "Geben Sie eine Zahl ein: ";
+	std::cin >> userInput;
+
+
+	if( userInput <= 10 )
+	{
+		std::cout << numbers.at(userInput - 1);
+	}else
+	{
+		std::cout << "Die eingegeben zahl, ist zu gross!";
+	}
+
+
+}
+
