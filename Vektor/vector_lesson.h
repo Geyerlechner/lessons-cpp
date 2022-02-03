@@ -382,3 +382,8 @@ void vector_lesson11()
 	}
 
 }
+
+void vector_lesson12()
+{
+
+}
