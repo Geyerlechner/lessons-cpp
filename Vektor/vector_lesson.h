@@ -350,7 +350,35 @@ void vector_lesson10()
 
 	}
 
+}
 
+void vector_lesson11()
+{
+	std::vector<int> primes;
+	int count = 0;
 
+	for (int i = 2; i <= 100; i++)
+	{
+		bool isPrimes = true;
+		for (int j = 2; j < i; j++)
+		{
+
+			if( i % j == 0 )
+			{ 
+				isPrimes = false;
+				break;
+			}
+		}
+
+		if( isPrimes )
+		{
+			primes.push_back(i);
+		}
+	}
+
+	for(auto &num : primes)
+	{
+		std::cout << num << std::endl;
+	}
 
 }

@@ -13,7 +13,7 @@ int main()
 //	vector_lesson5();
 //	vector_lesson7();
 //	vector_lesson9();
-	vector_lesson10();
+	vector_lesson11();
  
   
 
