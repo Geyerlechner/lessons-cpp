@@ -302,8 +302,15 @@ void vector_lesson10()
 	int userInput = 0;
 	int wins = 0;
 	int lost = 0;
+	int drawn = 0;
 
 	std::cout << "1: Schere, 2: Stein oder 3: Papier?: ";
+
+	auto print = [&](){
+		std::cout << "Punktestand: Gewonnen: " << wins << " Verloren: " << lost  << " Unentschieden: " << drawn << std::endl;
+		std::cout << "---------------------------------------------------------------\n";
+		std::cout << "1: Schere, 2: Stein oder 3: Papier?: ";
+	};
 
 	while(std::cin>>userInput)
 	{
@@ -316,49 +323,31 @@ void vector_lesson10()
 
 		std::cout << "Computer: " << name.at(randNum -1 ) << std::endl; 
 
-		switch(userInput){
-	
-		case 1:
+		if( userInput == randNum ) 
+		{	std::cout << "Unentschieden!" << std::endl;
+			drawn++;
+			print();
+			continue;
+		}
 
-			if( randNum == 2 ) {
-				std::cout << "Verloren!";
-				lost++;
-			}else{
-				wins++;
-				std::cout << "Gewonnen";
-			}
+	switch(userInput){
+		case 1:
+			if( randNum == 2 ) { std::cout << "Verloren!"; lost++; } else { wins++; std::cout << "Gewonnen!"; }
 		break;
 
 		case 2:
-
-			if( randNum == 3 ) {
-				lost++;
-				std::cout << "Verloren!";
-			}else{
-				wins++;
-				std::cout << "Gewonnen";
-			}
+			if( randNum == 3 ) { lost++; std::cout << "Verloren!"; } else { wins++; std::cout << "Gewonnen!"; }
 		break;
 		case 3:
-
-			if( randNum == 1 ) {
-				lost++;
-				std::cout << "Verloren!";
-			}else{
-				wins++;
-				std::cout << "Gewonnen";
-			}
-
+			if( randNum == 1 ) { lost++; std::cout << "Verloren!"; } else { wins++; std::cout << "Gewonnen!"; }
 		break;
-
-
+		default:
+			std::cout << "Falsche eingabe!";
 	}
 
-	std::cout << std::endl;
-	
-	std::cout << "Punktestand: Gewonnen: " << wins << " verloren: " << lost << std::endl;
-	std::cout << "---------------------------------------------------------------\n";
-	std::cout << "1: Schere, 2: Stein oder 3: Papier?: ";
+		std::cout << std::endl;
+		print();
+
 	}
 
 
