@@ -15,7 +15,7 @@ int framed_area(int x, int y) // berechnet die Fläche innerhalb eines Rahmens
 	return area(x-frame_width, y-frame_width);
 }
 
-int main()
+void lesson_1()
 {
 
 	//Typefehler
@@ -36,6 +36,34 @@ int main()
 	if( y <= 2 || z <= 2 )
 		error("area()-Argument ist nicht positiv");
 	int area3 = framed_area( y, z );
+
+}
+
+void lesson_2()
+{
+
+	int x = 0;
+	int y = 0;
 		
+	std::cout << "Geben Sie 2 werte ein! X & Y  \nGeben Sie einen wert fuer x ein: " ;
+	std::cin >> x;
+	std::cout << "Geben Sie einen wert fuer y ein: ";
+	std::cin >> y;
+
+	if( x == 0 ){
+		std::cout << "Es wurde kein wert fuer x eingeben!";
+	}else if ( y == 0 )
+	{
+		std::cout << "Es wurde kein wert fuer y eingeben!";
+	}
+
+}
+
+int main()
+{
+
+
+
+
 
 }
