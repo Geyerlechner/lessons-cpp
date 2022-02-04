@@ -1,6 +1,6 @@
 #include <iostream>
 #include "std_lib_facilities.h"
-
+#include <vector>
 class Bad_area {}; //Typ, der speziell für das Melden von Fehlern aus area() definiert wurde
 
 int area(int length, int width)
@@ -64,7 +64,7 @@ void lesson_2()
 }
 
 
-int main()
+void tryCatch()
 {
 	try {
 	
@@ -82,6 +82,50 @@ int main()
 		std::cout << "Hoppla! Ungueltige Argumente fuer area()\n";
 	}
 
+}
+
+//class out_of_range {};
+//
+//	vector<int> v; // ein Vektor für ganze Zahlen
+//	int i;
+//
+//	while (cin>>i) v.push_back(i);		// lies Werte ein
+//	for (int i = 0; i <= v.size(); i++) {	// gibt Werte aus
+//		std::cout << "v[" << i <<"] == " << v[i] << std::endl; 
+//	}
+//	catch(out_of_range)
+//	{
+//		cerr << "Hoppla! Bereichsfehler\n";
+//		return 1;
+//	}catch(...)
+//	{
+//		cerr << "Ausnahme: irgendetwas ist schiefgelaufen\n";
+//		return 2;
+//	}
+	
+
+void error(string s1, string s2)
+{
+	throw runtime_error(s1 + s2);
+}
+
+int main()
+{
+
+	try {
+		return 0;
+	}
+	catch( runtime_error& e ){
+		cerr << "Laufzeitfehler:" << e.what() << "\n";
+		keep_window_open();
+		return 1;
+	}
+	catch(...)
+	{
+		cerr << "Hoppla! unbekannte Ausnahne!\n";
+		keep_window_open();
+		return 2; // 2 steht für "Fehlgeschlagen"
+	}
 
 
 }
