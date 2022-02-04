@@ -109,22 +109,8 @@ void error(string s1, string s2)
 	throw runtime_error(s1 + s2);
 }
 
-//try {
-//	return 0;
-//}
-//catch( runtime_error& e ){
-//	cerr << "Laufzeitfehler:" << e.what() << "\n";
-//	keep_window_open();
-//	return 1;
-//}
-//catch(...)
-//{
-//	cerr << "Hoppla! unbekannte Ausnahne!\n";
-//	keep_window_open();
-//	return 2; // 2 steht für "Fehlgeschlagen"
-//}
 
-int main()
+int lesson3()
 {
 	try {
 		int x1  = narrow_cast<int>(2.9); // wirft eine Ausnahme
@@ -144,4 +130,29 @@ int main()
 		keep_window_open();
 		return 2; // 2 steht für "fehlgeschlagen"
 	}
+}
+
+int main()
+{
+	vector<double> temps;
+
+	double temp = 0;
+	double sum = 0;
+	double high_temp = 0;
+	double low_temp = 0;
+
+	while( cin >> temp )
+		temps.push_back(temp);
+
+	for ( int i = 0; i < temps.size(); i++ )
+	{
+		if( temps[i] > high_temp ) high_temp = temps[i];
+		if( temps[i] > low_temp ) low_temp = temps[i];
+		sum += temps[i];
+	}
+
+	std::cout << "Hoechste Temperatur: " << high_temp << std::endl;
+	std::cout << "Niedrigste Temperatur: " << low_temp << std::endl;
+	std::cout << "Durchsnittstemperatur: " << sum/temps.size() << std::endl;
+
 }
