@@ -14,6 +14,7 @@ int main()
 //	vector_lesson7();
 //	vector_lesson9();
 //	vector_lesson11();
+// vector_lesson12();
  vector_lesson12();
   
 

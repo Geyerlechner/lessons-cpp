@@ -423,5 +423,16 @@ void vector_lesson12()
 		std::cout << "Name: " << name << " Score: " << score.at(i) <<  "\n";
 	}
 
+	
+	std::cout << "Suche: Geben Sie einen Namen ein: ";
+	std::cin >> input;
+
+	for(auto &sname : names)
+	{
+		if(input == sname)
+		{
+			std::cout << sname << " wurde gefunden";
+		}
+	}
 
 }
