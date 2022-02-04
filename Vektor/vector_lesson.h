@@ -414,24 +414,26 @@ void vector_lesson12()
 		print();
 	}
 
-	std::cout << "Ausgabe: " << std::endl;
+	//std::cout << "Ausgabe: " << std::endl;
 
-	int i = -1;
-	for (auto &name : names)
+	//int i = -1;
+	//for (auto &name : names)
+	//{
+	//	i++;
+	//	std::cout << "Name: " << name << " Score: " << score.at(i) <<  "\n";
+	//}
+
+
+	std::cout << "Suche: Geben Sie die Punktzahl ein: ";
+	std::cin >> scoreInput;
+
+	int j = -1;
+	for(auto &value : score)
 	{
-		i++;
-		std::cout << "Name: " << name << " Score: " << score.at(i) <<  "\n";
-	}
-
-	
-	std::cout << "Suche: Geben Sie einen Namen ein: ";
-	std::cin >> input;
-
-	for(auto &sname : names)
-	{
-		if(input == sname)
+		if(scoreInput == value)
 		{
-			std::cout << sname << " wurde gefunden";
+			j++;
+			std::cout << "Name: " << names.at(j) << " Punkte: " << value << std::endl;
 		}
 	}
 
