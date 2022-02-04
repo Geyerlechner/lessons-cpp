@@ -6,9 +6,12 @@ int area(int length, int width)
 	return length*width;
 }
 
-const int frame_width = 2;
 int framed_area(int x, int y) // berechnet die Fläche innerhalb eines Rahmens
 {
+	const int frame_width = 2;
+	if( x-frame_width <= 0 || y-frame_width <= 0 )
+		error("area()-Argument in framed_area() ist nicht positiv");
+		
 	return area(x-frame_width, y-frame_width);
 }
 
