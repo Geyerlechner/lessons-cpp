@@ -109,23 +109,39 @@ void error(string s1, string s2)
 	throw runtime_error(s1 + s2);
 }
 
+//try {
+//	return 0;
+//}
+//catch( runtime_error& e ){
+//	cerr << "Laufzeitfehler:" << e.what() << "\n";
+//	keep_window_open();
+//	return 1;
+//}
+//catch(...)
+//{
+//	cerr << "Hoppla! unbekannte Ausnahne!\n";
+//	keep_window_open();
+//	return 2; // 2 steht für "Fehlgeschlagen"
+//}
+
 int main()
 {
-
 	try {
+		int x1  = narrow_cast<int>(2.9); // wirft eine Ausnahme
+		int x2  = narrow_cast<int>(2.0); // O.K.
+		char c1 = narrow_cast<int>(1066); // wirft eine Ausnahme
+		char c2 = narrow_cast<int>(85); // O.K.
 		return 0;
 	}
 	catch( runtime_error& e ){
-		cerr << "Laufzeitfehler:" << e.what() << "\n";
+		cerr << "laufzeitfehler:" << e.what() << "\n";
 		keep_window_open();
 		return 1;
 	}
 	catch(...)
 	{
-		cerr << "Hoppla! unbekannte Ausnahne!\n";
+		cerr << "hoppla! unbekannte ausnahne!\n";
 		keep_window_open();
-		return 2; // 2 steht für "Fehlgeschlagen"
+		return 2; // 2 steht für "fehlgeschlagen"
 	}
-
-
 }
