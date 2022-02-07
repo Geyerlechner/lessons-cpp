@@ -40,7 +40,7 @@ int tasks_1()
 	}
 	catch( exception& e )
 	{
-		std::cerr << "Hoppla: unbekannte Ausnahme!\n";
+		std::cerr << "Hoppla: unbekannte Ausnahme!\n" << e.what();
 		keep_window_open();
 	}
 	catch (...)
@@ -50,19 +50,42 @@ int tasks_1()
 		return 2;
 	}
 
-
+	return 0;
 }
 
-double ctok(double c)
+double ctok(double c, int convert)
 {
-	int k = c + 273.15;
-	return k;
+	if( c < -273.15) 
+	{
+		cout << "Achtung: Der absolute Nullpunkt wurde erreicht!"; 
+		return 0; 
+	}
+
+	switch(convert){
+	case 1:
+		return c + 273.15;
+		break;
+	case 2:
+		return c - 273.15;
+		break;
+	default:
+		cout << "Keine richtige eingabe";
+	}
+
+	return 0;
 }
 
 void task_2()
 {
 	double c = 0;
+	double d = 0;
+	int e = 0;
+	std::string output;
+
 	cin >> d;
-	double k = ctok("c");
-	cout << k << endl;
+	cin >> e;
+
+	double k = ctok(d, e);
+	e == 1 ? output = " K" : output = " C";
+	cout << k << output << endl;
 }

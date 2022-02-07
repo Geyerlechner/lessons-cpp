@@ -14,7 +14,8 @@ int main()
 //	vector_lesson11();
 // vector_lesson12();
  // vector_lesson12();	
-	tasks_1();
+//	tasks_1();
+	task_2();
 
 
 
