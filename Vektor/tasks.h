@@ -52,3 +52,17 @@ int tasks_1()
 
 
 }
+
+double ctok(double c)
+{
+	int k = c + 273.15;
+	return k;
+}
+
+void task_2()
+{
+	double c = 0;
+	cin >> d;
+	double k = ctok("c");
+	cout << k << endl;
+}
