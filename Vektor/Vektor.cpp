@@ -1,7 +1,6 @@
 #include "vector_lesson.h"
    
 
-
 int main()
 {
 
@@ -15,8 +14,9 @@ int main()
 //	vector_lesson9();
 //	vector_lesson11();
 // vector_lesson12();
- vector_lesson12();
-  
+ // vector_lesson12();
+	
+	vector_lesson13();
 
 
 	return 0;
