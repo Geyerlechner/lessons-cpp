@@ -132,27 +132,143 @@ int lesson3()
 	}
 }
 
-int main()
-{
-	vector<double> temps;
 
-	double temp = 0;
+int lesson4()
+{
+	// Syntax fehler
+	//	Cout << "Erfolg!\n";
+	//	cout << "Erfolg!\n;
+	//	cout << "Erfolg" << !\n;
+	//	cout << success << endl;
+	//	string res = 7; vector<int> v(10); v[5] = res; cout << "Erfolg!\n";
+	//	if( cond ) cout << "Erfolg!\n"; else cout << "Erfolg!\n";
+	//	if( cond ) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n";
+	//	string s = "Affe"; boo c = "Narr" < s; if(c) cout << "Erfolg!\n";
+	//	string s = "Affe"; if(s == "Narr")  cout < "Erfolg!\n";
+	//	string s = "Affe"; if(s+"Narr") cout << "Erfolg!\n";
+	//	if(true) then cout "Erfolg!\n"; else cout << "Fehlschlag!\n";	
+	//	string<char> s= "Erfolg!\n"; for(int i = 0; i <= 10; i++) cout << s[i];
+	//	std::cin << "Erfolg!\n";
+
+	try 
+	{	
+		// ector<int> v(10); v[5] = 7; cout << "Erfolg!\n"; Richtig!
+		// bool c = false; if( c ) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n"; Richtig
+		// string s = "Affe"; if(s == "Narr")  cout << "Erfolg!\n"; Richtig
+		// vector<char> v(5); for (int i = 0; 0 < v.size(); i++); cout << "Erfolg!\n"; Falsch -> 0 < v.size()
+		// vector<char> v(5); for (int i = 0; i <= v.size(); i++); cout << "Erfolg!\n"; Richtig
+		// string s = "Erfolg!\n"; for (int i = 0; i < 6; i++) cout << s[i]; Falsch -> Erfolg!\n = 9 Zeichen, gibt aber nur bis zum 6ten zeichen aus
+		// int x = 2000; char c = x; if(c==2000) cout << "Erfolg!\n"; Falsch int zu char 
+		// string s = "Erfolg!\n"; for (int i = 0; i < 10; i++) cout << s[i]; Falsch out of Range!
+		// vector<char> v(5); for (int i = 0; i <= v.size(); i++); cout << "Erfolg!\n"; Richtig
+		// int i = 0; int j = 9; while(i<10) ++j; if(j<i) cout << "Erfolg!\n"; Falsch j++ und nicht i++
+		// int x = 2; double d = 5 / (x-2); if(d==2*x+0.5) cout << "Erfolg!\n"; Falsch (x-2) = 0 
+		// int i = 0; while(1<10) ++j; if(j<i) cout << "Erfolg!\n"; Falsch j = ?
+		// int x = 4; double d = 5/(x-2); if(d=2*x+0.5) cout << "Erfolg!\n"; Richtig
+
+		keep_window_open();
+	}
+	catch( exception& e )
+	{
+		std::cerr << "Hoppla: unbekannte Ausnahme!\n" << e.what();
+		keep_window_open();
+	}
+	catch (...)
+	{
+		std::cerr << "Hoppla: unbekannte Ausnahme!\n";
+		keep_window_open();
+		return 2;
+	}
+
+	return 0;
+}
+
+void lesson5()
+{
 	double sum = 0;
 	double high_temp = 0;
 	double low_temp = 0;
+	
+	vector<double> value1 { -16.5, -23.2, -24.0, -25.7, -26.1, -18.6, -9.7, -2.4,
+								7.5, 12.6, 23.8, 25.3, 28.0, 34.8, 36.7, 41.5, 
+								40.3, 42.6, 39.7, 35.4, 12.6, 6.5, -3.7, -14.3 };
 
-	while( cin >> temp )
-		temps.push_back(temp);
+	vector<double> value2 { 76.5, 73.5, 71.0, 73.6, 70.1, 73.5, 70.1, 73.5, 77.6, 85.3, 
+								 88.5, 91.7, 95.9, 99.2, 99.2, 98.2, 100.6, 106.3, 112.4, 
+								 110.2, 103.6, 94.9, 91.7, 88.4, 85.2, 85.4, 87.7 }; 
+	
+    for (double x : value2)
+    {
+        if (high_temp == 0 && low_temp == 0) {
+            high_temp = x;
+            low_temp = x;
+        }
 
-	for ( int i = 0; i < temps.size(); i++ )
-	{
-		if( temps[i] > high_temp ) high_temp = temps[i];
-		if( temps[i] > low_temp ) low_temp = temps[i];
-		sum += temps[i];
-	}
+        if (x > high_temp) high_temp = x;   // find high
+        if (x < low_temp) low_temp = x;     // find low
+        sum += x;
+    }
 
 	std::cout << "Hoechste Temperatur: " << high_temp << std::endl;
 	std::cout << "Niedrigste Temperatur: " << low_temp << std::endl;
-	std::cout << "Durchsnittstemperatur: " << sum/temps.size() << std::endl;
+	std::cout << "Durschnittstemperatur:" << sum / value2.size() << std::endl;
+}
+
+double ctok(double c, int convert)
+{
+	if( c < -273.15) 
+	{
+		cout << "Achtung: Der absolute Nullpunkt wurde erreicht!"; 
+		return 0; 
+	}
+
+	switch(convert){
+	case 1:
+		return c + 273.15;
+		break;
+	case 2:
+		return c - 273.15;
+		break;
+	case 3:
+		return (c * 9/5) + 32;
+		break;
+	default:
+		cout << "Keine richtige eingabe";
+	}
+
+	return 0;
+}
+
+void lesson6()
+{
+	double c = 0;
+	double d = 0;
+	int e = 0;
+	std::string output;
+
+	cin >> d;
+	cin >> e;
+
+	double k = ctok(d, e);
+	switch(e)
+	{
+	case 1:
+		output = " K";
+		break;
+	case 2:
+		output = " C";
+		break;		
+	case 3:
+		output = " F";
+		break;
+	}
+	e == 1 ? output = " K" : output = " C";
+	cout << k << output << endl;
+}
+
+
+int main()
+{
+
 
 }
