@@ -131,27 +131,39 @@ int lesson3()
 		return 2; // 2 steht für "fehlgeschlagen"
 	}
 }
-
+#define SUCCESS "[4] Erfolg!\n"
 
 int lesson4()
 {
-	// Syntax fehler
-	//	Cout << "Erfolg!\n";
-	//	cout << "Erfolg!\n;
-	//	cout << "Erfolg" << !\n;
-	//	cout << success << endl;
-	//	string res = 7; vector<int> v(10); v[5] = res; cout << "Erfolg!\n";
-	//	if( cond ) cout << "Erfolg!\n"; else cout << "Erfolg!\n";
-	//	if( cond ) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n";
-	//	string s = "Affe"; boo c = "Narr" < s; if(c) cout << "Erfolg!\n";
-	//	string s = "Affe"; if(s == "Narr")  cout < "Erfolg!\n";
-	//	string s = "Affe"; if(s+"Narr") cout << "Erfolg!\n";
-	//	if(true) then cout "Erfolg!\n"; else cout << "Fehlschlag!\n";	
-	//	string<char> s= "Erfolg!\n"; for(int i = 0; i <= 10; i++) cout << s[i];
-	//	std::cin << "Erfolg!\n";
 
 	try 
 	{	
+
+		cout << "[1] Erfolg!\n";
+		cout << "[2] Erfolg!\n";
+		cout << "[3] Erfolg" << "!\n";
+		cout << SUCCESS;
+		int res = 7; vector<int> v(10); v[5] = res; cout << "[5] Erfolg!\n";
+		v[5] = 7; if(v[5] == 7) cout << "[6] Erfolg!\n";
+		if( true ) cout << "[7] Erfolg!\n"; else cout << "Fehlschlag!\n";
+		bool c = true; if( c ) cout << "[8] Erfolg!\n"; else cout << "Fehlschlag!\n";
+		string s = "Affe"; bool cs = "Narr" > s; if(cs) cout << "[9] Erfolg!\n";
+		if(s != "Narr")  cout << "[10] Erfolg!\n";
+		if(s != "Narr") cout << "[11] Erfolg!\n";
+		if("Affe") cout << "[12] Erfolg!\n";
+		vector<char> v5(1); for (int i = 0; i < v5.size(); i++) cout << "[13] Erfolg!\n";
+		for (int i = 1; i <= v5.size(); i++) cout << "[14] Erfolg!\n";
+		s = "[15] Erfolg!\n"; for (int i = 0; i < 14; i++) cout << s[i];
+		if(true) cout << "[16] Erfolg!\n"; else cout << "Fehlschlag!\n";
+		int x = 2000; int c1 = x; if(c1 == 2000) cout << "[17] Erfolg!\n"; 
+		s = "[18] Erfolg!\n"; for (int i = 0; i < 14; i++) cout << s[i];
+		vector<int> v1(0); for (int i = 0; i <= v1.size(); i++) cout << "[19] Erfolg!\n"; 
+		int i = 0; int j = 0; while(i<10) ++i; if(j<i) cout << "[20] Erfolg!\n"; 
+
+
+//		if(true) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n";	
+	//	string<char> s= "Erfolg!\n"; for(int i = 0; i <= 10; i++) cout << s[i];
+	//	std::cin << "Erfolg!\n";
 		// ector<int> v(10); v[5] = 7; cout << "Erfolg!\n"; Richtig!
 		// bool c = false; if( c ) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n"; Richtig
 		// string s = "Affe"; if(s == "Narr")  cout << "Erfolg!\n"; Richtig
@@ -267,9 +279,30 @@ void lesson6()
 	cout << k << output << endl;
 }
 
+void lesson7()
+{
+	vector<int> values;
+	int number = 0;
+
+	while(std::cin >> number)
+	{
+		
+		values.push_back(number);
+
+
+	}
+
+	for (auto number : values)
+	{
+		cout << number;
+	}
+
+
+	
+}
 
 int main()
 {
-	lesson6();
+	lesson4();
 
 }
