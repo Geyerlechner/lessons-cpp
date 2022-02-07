@@ -271,34 +271,39 @@ void lesson6()
 
 void lesson7()
 {
-	vector<int> values;
-	int number = 0;
-	int n = 0;
-	int value = 0;
+	vector<double> iValues;
+	vector<double> dValues;
 
-	cout << "Eingabe: ";
+	double number = 0;
+	double value = 0;
+
+	cout << "1 Eingabe: ";
 	while(std::cin >> number)
 	{
-		cout << "Eingabe: ";
 		if(number == 0000)
 			break;
 	
-		values.push_back(number);
+		iValues.push_back(number);
+		
+		cout << "2 Eingabe: ";
+		cin>> number;
+		dValues.push_back(number);
+		
+		cout << "---------------------------------\n";
+		cout << "1 Eingabe: ";
 	}
 
 	cout << endl;
 	cout << "Wie viele Zahlen sollen aufaddiert werden? ";
 	cin >> number;
 
-	if(number <= values.size() )
+	if(number <= iValues.size() )
 	{
 		for (int i = 0; i < number; i++)
-			value += values[i];
-		
-		cout << "Ergebnis: " << value << endl;
+			cout << "Differenz: " << iValues[i] - dValues[i] << endl;
 	}else
 	{
-		cout << "Es wurden max " << values.size() << " Zahlen eingegeben!" << endl;	
+		cout << "Es wurden max " << iValues.size() << " Zahlen eingegeben!" << endl;	
 	}
 
 	keep_window_open();
@@ -307,5 +312,5 @@ void lesson7()
 int main()
 {
 	
-	lesson6();
+	lesson7();
 }
