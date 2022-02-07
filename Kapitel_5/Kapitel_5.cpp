@@ -159,7 +159,8 @@ int lesson4()
 		vector<int> v1(0); for (int i = 0; i <= v1.size(); i++) cout << "[19] Erfolg!\n"; 
 		int i = 0; int j = 0; while(i<10) ++i; if(j<i) cout << "[20] Erfolg!\n"; 
 		double x1 = 2; double d = 5 /(x1/2); if( d == 2 *(x1 + 0.5) ) cout << "[21] Erfolg!\n"; 
-		char str[14] = "[22] Erfolg!\n"; for (int i = 0; i < 14; i++) cout << str[i];
+		// char str[14] = "[22] Erfolg!\n"; for (int i = 0; i < 14; i++) cout << str[i];
+		std::basic_string< char > basic_string = "[22] Erfolg!\n"; for (int i = 0; i < basic_string.size(); i++) cout << basic_string[i];
 		while(i<10) ++i; if(j<i) cout << "[23] Erfolg!\n";
 		double xx = 4; double dd = 5 /( xx - 2 ); if( dd == 2 + 0.5 ) cout << "[24] Erfolg!\n";
 		cout << "[25] Erfolg!\n";
@@ -269,26 +270,39 @@ void lesson7()
 {
 	vector<int> values;
 	int number = 0;
+	int n = 0;
+	int value = 0;
 
+	cout << "Eingabe: ";
 	while(std::cin >> number)
 	{
-		
-		values.push_back(number);
-
-
-	}
-
-	for (auto number : values)
-	{
-		cout << number;
-	}
-
-
+		cout << "Eingabe: ";
+		if(number == 0000)
+			break;
 	
+		values.push_back(number);
+	}
+
+	cout << endl;
+	cout << "Wie viele Zahlen sollen aufaddiert werden? ";
+	cin >> number;
+
+	if(number <= values.size() )
+	{
+		for (int i = 0; i < number; i++)
+			value += values[i];
+		
+		cout << "Ergebnis: " << value << endl;
+	}else
+	{
+		cout << "Es wurden max " << values.size() << " Zahlen eingegeben!" << endl;	
+	}
+
+	keep_window_open();
 }
 
 int main()
 {
-	lesson4();
 
+	lesson7();
 }
