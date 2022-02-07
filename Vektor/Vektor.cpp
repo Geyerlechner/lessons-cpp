@@ -1,10 +1,7 @@
 #include "vector_lesson.h"
-#include "tasks.h"
+
 int main()
 {
-
-	
-
  //	vector_lesson2();
  // vector_leeson3();
  // vector_lesson4();
@@ -13,11 +10,7 @@ int main()
 //	vector_lesson9();
 //	vector_lesson11();
 // vector_lesson12();
- // vector_lesson12();	
-//	tasks_1();
-	task_2();
-
-
+ // vector_lesson12();
 
 	return 0;
 }
