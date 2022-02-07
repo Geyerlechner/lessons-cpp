@@ -456,7 +456,7 @@ void vector_lesson13()
 								 88.5, 91.7, 95.9, 99.2, 99.2, 98.2, 100.6, 106.3, 112.4, 
 								 110.2, 103.6, 94.9, 91.7, 88.4, 85.2, 85.4, 87.7 }; 
 	
-    for (int x : value2)
+    for (double x : value2)
     {
         if (high_temp == 0 && low_temp == 0) {
             high_temp = x;
