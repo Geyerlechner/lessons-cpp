@@ -138,7 +138,6 @@ int lesson4()
 
 	try 
 	{	
-
 		cout << "[1] Erfolg!\n";
 		cout << "[2] Erfolg!\n";
 		cout << "[3] Erfolg" << "!\n";
@@ -159,24 +158,11 @@ int lesson4()
 		s = "[18] Erfolg!\n"; for (int i = 0; i < 14; i++) cout << s[i];
 		vector<int> v1(0); for (int i = 0; i <= v1.size(); i++) cout << "[19] Erfolg!\n"; 
 		int i = 0; int j = 0; while(i<10) ++i; if(j<i) cout << "[20] Erfolg!\n"; 
-
-
-//		if(true) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n";	
-	//	string<char> s= "Erfolg!\n"; for(int i = 0; i <= 10; i++) cout << s[i];
-	//	std::cin << "Erfolg!\n";
-		// ector<int> v(10); v[5] = 7; cout << "Erfolg!\n"; Richtig!
-		// bool c = false; if( c ) cout << "Erfolg!\n"; else cout << "Fehlschlag!\n"; Richtig
-		// string s = "Affe"; if(s == "Narr")  cout << "Erfolg!\n"; Richtig
-		// vector<char> v(5); for (int i = 0; 0 < v.size(); i++); cout << "Erfolg!\n"; Falsch -> 0 < v.size()
-		// vector<char> v(5); for (int i = 0; i <= v.size(); i++); cout << "Erfolg!\n"; Richtig
-		// string s = "Erfolg!\n"; for (int i = 0; i < 6; i++) cout << s[i]; Falsch -> Erfolg!\n = 9 Zeichen, gibt aber nur bis zum 6ten zeichen aus
-		// int x = 2000; char c = x; if(c==2000) cout << "Erfolg!\n"; Falsch int zu char 
-		// string s = "Erfolg!\n"; for (int i = 0; i < 10; i++) cout << s[i]; Falsch out of Range!
-		// vector<char> v(5); for (int i = 0; i <= v.size(); i++); cout << "Erfolg!\n"; Richtig
-		// int i = 0; int j = 9; while(i<10) ++j; if(j<i) cout << "Erfolg!\n"; Falsch j++ und nicht i++
-		// int x = 2; double d = 5 / (x-2); if(d==2*x+0.5) cout << "Erfolg!\n"; Falsch (x-2) = 0 
-		// int i = 0; while(1<10) ++j; if(j<i) cout << "Erfolg!\n"; Falsch j = ?
-		// int x = 4; double d = 5/(x-2); if(d=2*x+0.5) cout << "Erfolg!\n"; Richtig
+		double x1 = 2; double d = 5 /(x1/2); if( d == 2 *(x1 + 0.5) ) cout << "[21] Erfolg!\n"; 
+		char str[14] = "[22] Erfolg!\n"; for (int i = 0; i < 14; i++) cout << str[i];
+		while(i<10) ++i; if(j<i) cout << "[23] Erfolg!\n";
+		double xx = 4; double dd = 5 /( xx - 2 ); if( dd == 2 + 0.5 ) cout << "[24] Erfolg!\n";
+		cout << "[25] Erfolg!\n";
 
 		keep_window_open();
 	}
