@@ -262,13 +262,14 @@ void lesson6()
 		output = " F";
 		break;
 	}
-	e == 1 ? output = " K" : output = " C";
+	
+	
 	cout << k << output << endl;
 }
 
 
 int main()
 {
-
+	lesson6();
 
 }
