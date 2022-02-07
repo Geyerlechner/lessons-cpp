@@ -249,6 +249,9 @@ void lesson6()
 	cin >> e;
 
 	double k = ctok(d, e);
+
+	if( typeid(k).name() != "Int") cout << k << " ist kein Integer" << endl;
+	
 	switch(e)
 	{
 	case 1:
@@ -303,6 +306,6 @@ void lesson7()
 
 int main()
 {
-
-	lesson7();
+	
+	lesson6();
 }
