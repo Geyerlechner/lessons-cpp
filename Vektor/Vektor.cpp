@@ -1,6 +1,5 @@
 #include "vector_lesson.h"
-   
-
+#include "tasks.h"
 int main()
 {
 
@@ -14,9 +13,8 @@ int main()
 //	vector_lesson9();
 //	vector_lesson11();
 // vector_lesson12();
- // vector_lesson12();
-	
-	vector_lesson13();
+ // vector_lesson12();	
+	tasks_1();
 
 
 	return 0;

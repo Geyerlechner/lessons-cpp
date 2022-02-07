@@ -142,6 +142,8 @@
     <ClCompile Include="Vektor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="std_lib_facilities.h" />
+    <ClInclude Include="tasks.h" />
     <ClInclude Include="vector_lesson.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -23,5 +23,11 @@
     <ClInclude Include="vector_lesson.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="std_lib_facilities.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
