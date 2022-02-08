@@ -327,8 +327,47 @@ void lesson8()
 
 }
 
+void lesson9()
+{
+	vector<int> value { 4, 7, 8, 1 };
+	vector<int>::iterator it;
+	vector<int> userValue;
+	
+	int i = 0;
+	int userInput = 0;
+	int bull = 0;
+	int cows = 0;
+
+	cout << "Ratespiel Bulls and Cows\n";
+	cout << "-------------------------\n";
+	
+	for (int i = 1; i < 5; i++)
+	{
+		cout << i << " Eingabe: ";
+		cin >> userInput;
+		userValue.push_back(userInput);
+	}
+	for(auto animal : userValue)
+	{	
+		if( value[i++] == animal ) 
+		{
+			bull++;
+		}
+		else
+		{
+		  it = find (value.begin(), value.end(), animal); 
+		  if (it != value.end()) cows++;
+		}
+	}
+
+	cout << "-------------------------\n";
+	cout << "Win Bulls: " << bull << endl; 
+	cout << "Win Cows: " << cows << endl; 
+
+}
+
 int main()
 {
 	
-	lesson8();
+	lesson9();
 }
