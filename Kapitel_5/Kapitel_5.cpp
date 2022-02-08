@@ -329,15 +329,26 @@ void lesson8()
 
 void lesson9()
 {
-	vector<int> value { 4, 7, 8, 1 };
+	vector<int> value;
 	vector<int>::iterator it;
 	vector<int> userValue;
 	
 	int i = 0;
+	int generatorNumber;
 	int userInput = 0;
 	int bull = 0;
 	int cows = 0;
 
+	cout << "Geben Sie 4 Zufallszahlen ein!\n";
+	for (int i = 1; i < 5; i++)
+	{
+		cout << i << " Eingabe: "; 
+		std::cin >> generatorNumber;
+		srand(generatorNumber);
+		value.push_back(randint(10));
+	}
+
+	system("cls");
 	cout << "Ratespiel Bulls and Cows\n";
 	cout << "-------------------------\n";
 	
@@ -347,6 +358,7 @@ void lesson9()
 		cin >> userInput;
 		userValue.push_back(userInput);
 	}
+
 	for(auto animal : userValue)
 	{	
 		if( value[i++] == animal ) 
@@ -361,13 +373,33 @@ void lesson9()
 	}
 
 	cout << "-------------------------\n";
+	
+	cout << "Geheimzahlen: ";
+	for(auto secretNumber : value)
+		cout << secretNumber << " ";
+	
+
+	cout << "\n-------------------------\n";
 	cout << "Win Bulls: " << bull << endl; 
 	cout << "Win Cows: " << cows << endl; 
-
+	
+	keep_window_open();
+	system("cls");
+	lesson9();
 }
 
 int main()
 {
+	//int i = 0;
+	//int t = 0;
+	//
+	//
+	//while(std::cin >> i)
+	//{
+	//	srand(i);
+	//	cout << "\nAusgabe: " << randint(10) << endl;
+	//}
 	
+
 	lesson9();
 }
