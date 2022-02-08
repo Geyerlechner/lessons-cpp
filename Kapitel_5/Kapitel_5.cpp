@@ -388,18 +388,13 @@ void lesson9()
 	lesson9();
 }
 
+void lesson10()
+{
+
+}
+
 int main()
 {
-	//int i = 0;
-	//int t = 0;
-	//
-	//
-	//while(std::cin >> i)
-	//{
-	//	srand(i);
-	//	cout << "\nAusgabe: " << randint(10) << endl;
-	//}
-	
 
-	lesson9();
+
 }
