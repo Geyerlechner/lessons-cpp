@@ -390,6 +390,14 @@ void lesson9()
 
 void lesson10()
 {
+	vector<string> son = { "Sonntag", "sonntag", "So", "so"		  };
+	vector<string> mon = { "Montag", "montag", "Mo", "mo"		  };
+	vector<string> di =  { "Dienstag", "dienstag", "Di", "di"	  };
+	vector<string> mi =  { "Mittwoch", "mittwoch", "Mi", "mi"	  };
+	vector<string> don = { "Donnerstag", "donnerstag", "Do", "do" };
+	vector<string> fr  = { "Freitag", "freitag", "Fr", "fr"		  };
+	vector<string> sa  = { "Samstag", "samstag", "Sa", "sa"		  };		
+
 
 }
 
