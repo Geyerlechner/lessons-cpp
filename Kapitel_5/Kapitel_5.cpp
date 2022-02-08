@@ -309,8 +309,26 @@ void lesson7()
 	keep_window_open();
 }
 
+void lesson8()
+{
+    int summe = 0;
+	int i = 0;
+
+	// 2147450879
+	for(;;)
+	{	i++;
+        summe += i + 1;
+
+		if(summe < 0)
+			break;
+
+		cout << summe << endl;
+	}
+
+}
+
 int main()
 {
 	
-	lesson7();
+	lesson8();
 }
