@@ -388,21 +388,80 @@ void lesson9()
 	lesson9();
 }
 
+void findWeek(vector<string> &v, vector<int> *number, string &day, int &dayNum)
+{
+	for(auto var : v)
+		if( day == var  ) number->push_back(dayNum);
+}
+
 void lesson10()
 {
-	vector<string> son = { "Sonntag", "sonntag", "So", "so"		  };
-	vector<string> mon = { "Montag", "montag", "Mo", "mo"		  };
-	vector<string> di =  { "Dienstag", "dienstag", "Di", "di"	  };
-	vector<string> mi =  { "Mittwoch", "mittwoch", "Mi", "mi"	  };
-	vector<string> don = { "Donnerstag", "donnerstag", "Do", "do" };
-	vector<string> fr  = { "Freitag", "freitag", "Fr", "fr"		  };
-	vector<string> sa  = { "Samstag", "samstag", "Sa", "sa"		  };		
+	vector<string> Sunday	 = { "Sonntag", "sonntag", "So", "so"		};
+	vector<string> Monday	 = { "Montag", "montag", "Mo", "mo"			};
+	vector<string> Tuesday	 = { "Dienstag", "dienstag", "Di", "di"		};
+	vector<string> Wednesday = { "Mittwoch", "mittwoch", "Mi", "mi"		};
+	vector<string> Thursday	 = { "Donnerstag", "donnerstag", "Do", "do"	};
+	vector<string> Friday	 = { "Freitag", "freitag", "Fr", "fr"		};
+	vector<string> Saturday  = { "Samstag", "samstag", "Sa", "sa"		};		
 
+	vector<int> su_num;
+	vector<int> mo_num;
+	vector<int> tu_num;
+	vector<int> we_num;
+	vector<int> th_num;
+	vector<int> fr_num;
+	vector<int> sa_num;
+
+	int su_count = 0;
+	int mo_count = 0;
+	int tu_count = 0;
+	int we_count = 0;
+	int th_count = 0;
+	int fr_count = 0;
+	int sa_count = 0;
+
+	int dayNum;
+	std::string day;
+	
+	cout << "Beenden mit end\n";
+	cout << "Wochentag/Anzahl: ";
+	while(cin >> day >> dayNum)
+	{
+		if( day == "end") break;
+
+		findWeek(Sunday,	&su_num, day, dayNum);
+		findWeek(Monday,	&mo_num, day, dayNum);
+		findWeek(Tuesday,   &tu_num, day, dayNum);
+		findWeek(Wednesday, &we_num, day, dayNum);
+		findWeek(Thursday,	&th_num, day, dayNum);
+		findWeek(Friday,	&fr_num, day, dayNum);
+		findWeek(Saturday,	&sa_num, day, dayNum);
+
+		cout << "Wochentag/Zahl: ";
+	}
+
+	for(int n : su_num) su_count += n;
+	for(int n : mo_num) mo_count += n;
+	for(int n : tu_num) tu_count += n;
+	for(int n : we_num) we_count += n;
+	for(int n : th_num) th_count += n;
+	for(int n : fr_num) fr_count += n;
+	for(int n : sa_num) sa_count += n;
+	
+	
+	cout << "----------------------------\n";
+	cout << "Sunday:  "   << su_count << "\n" <<
+			"Monday:  "   << mo_count << "\n" <<
+			"Tuesday: "   << tu_count << "\n" <<
+			"Wednesday: " << we_count << "\n" <<
+			"Thursday: "  << th_count << "\n" << 
+			"Friday: "    << fr_count << "\n" <<
+			"Saturday: "  << sa_count << "\n";
 
 }
 
 int main()
 {
 
-
+	lesson10();
 }
