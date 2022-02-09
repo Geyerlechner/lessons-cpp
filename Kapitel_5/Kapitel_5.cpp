@@ -394,6 +394,42 @@ void findWeek(vector<string> &v, vector<int> *number, string &day, int &dayNum)
 		if( day == var  ) number->push_back(dayNum);
 }
 
+int getIndex(vector<string> v, string K)
+{
+    auto it = find(v.begin(), v.end(), K);
+ 
+    // If element was found
+    if (it != v.end())
+    {
+     
+        // calculating the index
+        // of K
+        int index = it - v.begin();
+        return index;
+    }
+    else {
+        // If the element is not
+        // present in the vector
+        return -1;
+    }
+}
+
+std::string str_tolower(std::string s) {
+
+    std::transform(s.begin(), s.end(), s.begin(), 
+		[](unsigned char c){ return std::tolower(c); } );
+    
+	return s;
+}
+
+void findWeek2(vector<string> &v, vector<int> &number, string day, int &dayNum)
+{
+	for(auto var : v)
+		if( day == var ) 
+			number[getIndex(v, day)] += dayNum;
+}
+
+
 void lesson10()
 {
 	vector<string> Sunday	 = { "Sonntag", "sonntag", "So", "so"		};
@@ -403,7 +439,7 @@ void lesson10()
 	vector<string> Thursday	 = { "Donnerstag", "donnerstag", "Do", "do"	};
 	vector<string> Friday	 = { "Freitag", "freitag", "Fr", "fr"		};
 	vector<string> Saturday  = { "Samstag", "samstag", "Sa", "sa"		};		
-
+	
 	vector<int> su_num;
 	vector<int> mo_num;
 	vector<int> tu_num;
@@ -460,8 +496,39 @@ void lesson10()
 
 }
 
+void lesson12()
+{
+
+	vector< string > weekdays = { "montag", "dienstag", "mittwoch", "donnerstag", "freitag", "samstag", "sonntag" };
+	vector< int > sum_weekdays;
+	sum_weekdays.resize( weekdays.size() );
+	
+	int dayNum;
+	std::string day;
+	
+	cout << "Beenden mit end\n";
+	cout << "Wochentag/Anzahl: ";
+	
+	while(cin >> day >> dayNum)
+	{
+		if( day == "end") break;
+
+		findWeek2(weekdays,	sum_weekdays, str_tolower(day), dayNum);
+		cout << "Wochentag/Zahl: ";
+	}
+
+	cout << "----------------------------\n";
+	cout << "Sunday:  "   << sum_weekdays.at(6) << "\n" <<
+			"Monday:  "   << sum_weekdays.at(0) << "\n" <<
+			"Tuesday: "   << sum_weekdays.at(1) << "\n" <<
+			"Wednesday: " << sum_weekdays.at(2) << "\n" <<
+			"Thursday: "  << sum_weekdays.at(3) << "\n" << 
+			"Friday: "    << sum_weekdays.at(4) << "\n" <<
+			"Saturday: "  << sum_weekdays.at(5) << "\n";
+}
+
 int main()
 {
-	// lesson10();
+	 lesson12();
 
 }
