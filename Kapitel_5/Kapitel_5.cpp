@@ -250,7 +250,7 @@ void lesson6()
 
 	double k = ctok(d, e);
 
-	if( typeid(k).name() != "Int") cout << k << " ist kein Integer" << endl;
+	if( typeid(k).name() != "int") cout << k << " ist kein Integer" << endl;
 	
 	switch(e)
 	{
@@ -462,6 +462,6 @@ void lesson10()
 
 int main()
 {
+	// lesson10();
 
-	lesson10();
 }
