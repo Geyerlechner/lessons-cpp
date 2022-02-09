@@ -3,21 +3,39 @@
 
 int main()
 {
-	cout << "Geben Sie bitte einen Ausdruck ein (wir unterstuetzen + und -): ";
+	cout << "Geben Sie bitte einen Ausdruck ein (wir unterstuetzen +, -, * und /):";
 	int lval = 0;
-	int rval = 0;
+	int rval;
 	char op;
-	int res;
+	cin >> lval;
+	
+	if(!cin) error("Kein erster Operand");
 
-	cin >> lval >> op >> rval;
+	while( cin>>op ){
+	
+		if(op != 'x') cin>>rval;
+		if(!cin) error("kein zweiter Operand");
 
-	if( op == '+' )
-		res = lval + rval;  // Addition
-	else if( op == '-' ) 
-		res = lval - rval; // Subtraktion
+		switch(op){
+		case '+':
+			lval += rval;
+			break;
+		case '-':
+			lval -= rval;
+			break;
+		case '*':
+			lval *= rval;
+			break;
+		case '/':
+			lval /= rval;
+			break;
+		default: 
+			cout << "Ergebnis: " << lval << '\n';
+			keep_window_open();
+			return 0;
+		}
+	}
 
-	cout << "Ergebnis: " << res << '\n';
-
-	keep_window_open();
+	error("ungueltiger Ausdruck");
 
 }
