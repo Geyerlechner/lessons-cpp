@@ -394,25 +394,6 @@ void findWeek(vector<string> &v, vector<int> *number, string &day, int &dayNum)
 		if( day == var  ) number->push_back(dayNum);
 }
 
-int getIndex(vector<string> v, string K)
-{
-    auto it = find(v.begin(), v.end(), K);
- 
-    // If element was found
-    if (it != v.end())
-    {
-     
-        // calculating the index
-        // of K
-        int index = it - v.begin();
-        return index;
-    }
-    else {
-        // If the element is not
-        // present in the vector
-        return -1;
-    }
-}
 
 std::string str_tolower(std::string s) {
 
@@ -421,14 +402,6 @@ std::string str_tolower(std::string s) {
     
 	return s;
 }
-
-void findWeek2(vector<string> &v, vector<int> &number, string day, int &dayNum)
-{
-	for(auto var : v)
-		if( day == var ) 
-			number[getIndex(v, day)] += dayNum;
-}
-
 
 void lesson10()
 {
@@ -513,9 +486,17 @@ void lesson12()
 	{
 		if( day == "end") break;
 
-		findWeek2(weekdays,	sum_weekdays, str_tolower(day), dayNum);
+	   auto ret = std::find_if(weekdays.begin(), weekdays.end(),
+                            [&](const auto &entry) { return entry.find(str_tolower(day)) != std::string::npos; });
+
+	   if(ret != weekdays.end())
+	   {
+		sum_weekdays[ret - weekdays.begin()] += dayNum;
+	   }
+
 		cout << "Wochentag/Zahl: ";
 	}
+
 
 	cout << "----------------------------\n";
 	cout << "Sunday:  "   << sum_weekdays.at(6) << "\n" <<
@@ -530,5 +511,4 @@ void lesson12()
 int main()
 {
 	 lesson12();
-
 }
