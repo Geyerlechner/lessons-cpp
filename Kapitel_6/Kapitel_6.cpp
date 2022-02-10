@@ -88,17 +88,23 @@ double expression()
 	double left = term(); // lies einen Term und werte ihn aus
 	Token t = get_token();		// lies das nächste Token ein
 
-	switch(t.kind){				// stelle fest, welcher Art das Token ist
-	case '+': 
-		left += term(); // werte Term aus und addiere
-		t = get_token();
-		break;
-	case '-': 
-		left -= term(); // werte Term aus und subtrahiere
-		t = get_token();
-		break;
-	default: return left;			 // liefere den Wert des Ausdrucks zurück 
+	while(true){
+	
+		switch(t.kind){				// stelle fest, welcher Art das Token ist
+		case '+': 
+			left += term(); // werte Term aus und addiere
+			t = get_token();
+			break;
+		case '-': 
+			left -= term(); // werte Term aus und subtrahiere
+			t = get_token();
+			break;
+		default: return left;			 // liefere den Wert des Ausdrucks zurück 
 	}
+
+	
+	}
+
 }
 
 
