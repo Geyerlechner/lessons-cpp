@@ -25,13 +25,15 @@ double term()
 			t = get_token();
 		break;
 		case '/':
-			left /= primary();
+		{
+			double d = primary();
+			if(d == 0) error("Division durch null");
+			left /= d;
 			t = get_token();
+			break;
+		}
 		break;
-		case '%':
-			left %= primary();
-			t = get_token();
-		break;
+
 		default: return left;
 		}
 	}
