@@ -61,24 +61,26 @@ double primary()
 double term()
 {
 	double left = primary();
-	Token t = get_token();
+	Token t = ts.get(); // lies das nächste Token aus dem Token-Stream ein
 	while(true){
 		switch(t.kind){
 		case '*':
 			left *= primary();
-			t = get_token();
+			t = ts.get();
 		break;
 		case '/':
 		{
 			double d = primary();
 			if(d == 0) error("Division durch null");
 			left /= d;
-			t = get_token();
+			t = ts.get();
 			break;
 		}
 		break;
 
-		default: return left;
+		default: 
+			ts.putback(t); // stelle t wieder zurück in den Token-Stream	
+			return left;
 		}
 	}
 }
@@ -93,14 +95,14 @@ double expression()
 		switch(t.kind){				// stelle fest, welcher Art das Token ist
 		case '+': 
 			left += term(); // werte Term aus und addiere
-			t = get_token();
+			t = ts.get();
 			break;
 		case '-': 
 			left -= term(); // werte Term aus und subtrahiere
-			t = get_token();
+			t = ts.get();
 			break;
 		default: 
-			ts.pushback(t);	// stelel t wieder zurück in den Token-Stream	
+			ts.putback(t);	// stelle t wieder zurück in den Token-Stream	
 			return left;	// liefere den Wert des Ausdrucks zurück 
 	}
 
