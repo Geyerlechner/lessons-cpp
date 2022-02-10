@@ -19,8 +19,8 @@ double expression()
 	double left = expression(); // lies einen Ausdruck ein und werte ihn aus
 	Token t = get_token();		// lies das nächste Token ein
 	switch(t.kind){				// stelle fest, welcher Art das Token ist
-	case '+': return left + term(); // lies ein Term ein und werte ihn aus, führe dann eine Addition aus
-	case '-': return left + term();  // lies einen Term ein und werte ihn aus, führe dann eine Subtrakion aus
+	case '+': return left + expression(); // lies ein Term ein und werte ihn aus, führe dann eine Addition aus
+	case '-': return left + expression();  // lies einen Term ein und werte ihn aus, führe dann eine Subtrakion aus
 	default: return left;			 // liefere den Wert des Ausdrucks zurück 
 	}
 }
