@@ -1,8 +1,20 @@
 #include <iostream>
 #include "../std_lib_facilities.h"
 
+
+
+class Token {
+public:	
+	char kind;	// Welche Kategorie von Token
+	double value; // für Zahlen: ein Wert
+	Token(char ch) : kind(ch), value(0) {} // erstelle ein Token aus einem char
+	Token(char ch, double val) : kind(ch), value(val) {} // erstelle ein Token aus einem char und einem double
+};
+
+
 int main()
 {
+
 	cout << "Geben Sie bitte einen Ausdruck ein (wir unterstuetzen +, -, * und /):";
 	int lval = 0;
 	int rval;
@@ -10,12 +22,12 @@ int main()
 	cin >> lval;
 	
 	if(!cin) error("Kein erster Operand");
-
+	
 	while( cin>>op ){
 	
 		if(op != 'x') cin>>rval;
 		if(!cin) error("kein zweiter Operand");
-
+	
 		switch(op){
 		case '+':
 			lval += rval;
@@ -35,7 +47,7 @@ int main()
 			return 0;
 		}
 	}
-
+	
 	error("ungueltiger Ausdruck");
 
 }
