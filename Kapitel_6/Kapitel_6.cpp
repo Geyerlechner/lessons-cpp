@@ -11,15 +11,6 @@ Token_stream::Token_stream() : full(false), buffer(0) // kein Token im Puffer
 }
 
 class Token_stream {
-public: 
-	Token_stream();			// erstelle einen Token_stream, der aus cin liest
-	Token get();			// lies ein TOken ein
-	void putback(Token t);  // lege ein Token zurück
-private: 
-
-};
-
-class Token_stream {
 public:
 	Token_stream();			// erstelle einen Token_stream, der aus cin liest
 	Token get();			// lies ein TOken ein (get() ist anderswo definiert)
@@ -28,6 +19,46 @@ private:
 	bool full;				// befindet sich ein Token im Puffer?
 	Token buffer;			// hier legen wir ein Token ab, das mit putback() zurückgestellt wurde
 };
+
+
+void Token_stream::putback(Token t)
+{
+	buffer = t;	 // kopiere t in den Puffer
+	full = true; // Puffer ist jetzt voll
+}
+
+Token Token_stream::get()
+{
+	if(full){  // gibt es bereits ein fertiges Token?
+			   // Token aus dem Puffer entfernen
+		full = false;
+		return buffer;
+	
+	}
+
+	char ch;
+	ch >> ch;	// beachten Sie, das >> Whitespace-Zeichen wie 
+				// Leerzeichen, Zeilenumbruch, Tabulatorzeichen etc. überspringt
+
+	switch(ch){
+	case ';': // für "Ausgeben"
+	case 'q': // für "Verlassen"
+	case '(': case ')': case '-': case '*': case '/': case '%':
+		return Token(ch);	// jedes Zeichen repräsentiert sich selbst
+	case '.':
+	case '0': case '1': case '2': case '3': case '4':
+	case '5': case '6': case '7': case '8': case '9':
+	{
+		cin.putback(ch); // lege die Ziffer zurück in den Eigabestream
+		double val;
+		cin >> val;
+		return Token('8', val); // '8' repräsentiert "eine Zahl"
+	}
+	default:
+		error("Ungueltiges Token");
+	}
+
+}
 
 
 // primary() // Faktor-Regel; behandelt Zahlen und Klammern ruft, expression() und get_token() auf
