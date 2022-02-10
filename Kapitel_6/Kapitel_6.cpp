@@ -2,14 +2,35 @@
 #include "../std_lib_facilities.h"
 #include "library.h"
 
-
 // get_token() // liest Zeichen ein und zerlegt sie in Token
-// expression() // Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
-// term() //Term-Regel; behandelt *, / und % auf
-// primary() // Faktor-Regel; behandelt Zahlen und Klammern ruft, expression() und get_token() auf
 
 double expression();
 
+Token_stream::Token_stream() : full(false), buffer(0) // kein Token im Puffer
+{
+}
+
+class Token_stream {
+public: 
+	Token_stream();			// erstelle einen Token_stream, der aus cin liest
+	Token get();			// lies ein TOken ein
+	void putback(Token t);  // lege ein Token zurück
+private: 
+
+};
+
+class Token_stream {
+public:
+	Token_stream();			// erstelle einen Token_stream, der aus cin liest
+	Token get();			// lies ein TOken ein (get() ist anderswo definiert)
+	void putback(Token t);  // lege ein Token zurück
+private: 
+	bool full;				// befindet sich ein Token im Puffer?
+	Token buffer;			// hier legen wir ein Token ab, das mit putback() zurückgestellt wurde
+};
+
+
+// primary() // Faktor-Regel; behandelt Zahlen und Klammern ruft, expression() und get_token() auf
 double primary()
 {
 	Token t = get_token();
@@ -28,6 +49,7 @@ double primary()
 	}
 }
 
+// term() //Term-Regel; behandelt *, / und % auf
 double term()
 {
 	double left = primary();
@@ -55,6 +77,7 @@ double term()
 	}
 }
 
+// expression() // Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
 double expression()
 {
 	double left = term(); // lies einen Term und werte ihn aus
