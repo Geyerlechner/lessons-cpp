@@ -14,6 +14,29 @@ public:
 	Token(char ch, double val) : kind(ch), value(val) {} // erstelle ein Token aus einem char und einem double
 };
 
+double term()
+{
+	double left = primary();
+	Token t = get_token();
+	while(true){
+		switch(t.kind){
+		case '*':
+			left *= primary();
+			t = get_token();
+		break;
+		case '/':
+			left /= primary();
+			t = get_token();
+		break;
+		case '%':
+			left %= primary();
+			t = get_token();
+		break;
+		default: return left;
+		}
+	}
+}
+
 double expression()
 {
 	double left = term(); // lies einen Term und werte ihn aus
