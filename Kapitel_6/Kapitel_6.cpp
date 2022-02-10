@@ -1,5 +1,7 @@
 #include <iostream>
 #include "../std_lib_facilities.h"
+#include "library.h"
+
 
 // get_token() // liest Zeichen ein und zerlegt sie in Token
 // expression() // Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
@@ -7,38 +9,6 @@
 // primary() // Faktor-Regel; behandelt Zahlen und Klammern ruft, expression() und get_token() auf
 
 double expression();
-
-class Token {
-public:	
-	char kind;	// Welche Kategorie von Token
-	double value; // für Zahlen: ein Wert
-	Token(char ch) : kind(ch), value(0) {} // erstelle ein Token aus einem char
-	Token(char ch, double val) : kind(ch), value(val) {} // erstelle ein Token aus einem char und einem double
-};
-
-Token get_token()    // read a token from cin
-{
-    char ch;
-    cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
-
-    switch (ch) {
- //not yet   case ';':    // for "print"
- //not yet   case 'q':    // for "quit"
-    case '(': case ')': case '+': case '-': case '*': case '/': 
-        return Token(ch);        // let each character represent itself
-    case '.':
-    case '0': case '1': case '2': case '3': case '4':
-    case '5': case '6': case '7': case '8': case '9':
-        {    
-            cin.putback(ch);         // put digit back into the input stream
-            double val;
-            cin >> val;              // read a floating-point number
-            return Token('8',val);   // let '8' represent "a number"
-        }
-    default:
-        error("Bad token");
-    }
-}
 
 double primary()
 {
@@ -104,17 +74,13 @@ double expression()
 		default: 
 			ts.putback(t);	// stelle t wieder zurück in den Token-Stream	
 			return left;	// liefere den Wert des Ausdrucks zurück 
+		}	
 	}
-
-	
-	}
-
 }
 
 
 int main()
 {
-
 	try {
 		while(cin)
 			cout << "=" << expression() << '\n';
