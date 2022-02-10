@@ -21,14 +21,14 @@ private:
 	Token buffer;			// hier legen wir ein Token ab, das mit putback() zurückgestellt wurde
 };
 
-Token get_token()    // read a token from cin
+Token get_token()    // read a token from cin (not my Code)
 {
     char ch;
     cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
 
     switch (ch) {
- //not yet   case ';':    // for "print"
- //not yet   case 'q':    // for "quit"
+	//not yet   case ';':    // for "print"
+	//not yet   case 'q':    // for "quit"
     case '(': case ')': case '+': case '-': case '*': case '/': 
         return Token(ch);        // let each character represent itself
     case '.':
@@ -43,7 +43,7 @@ Token get_token()    // read a token from cin
     default:
         error("Bad token");
     }
-} // not my Code
+}
 
 Token_stream::Token_stream() : full(false), buffer(0) // kein Token im Puffer
 {
@@ -51,21 +51,19 @@ Token_stream::Token_stream() : full(false), buffer(0) // kein Token im Puffer
 
 Token Token_stream::get()
 {
-	if(full){  // gibt es bereits ein fertiges Token?
-			   // Token aus dem Puffer entfernen
-		full = false;
+	if(full){			// gibt es bereits ein fertiges Token?
+		full = false;	// Token aus dem Puffer entfernen
 		return buffer;
-	
 	}
 
-	char ch;
-	cin >> ch;	// beachten Sie, das >> Whitespace-Zeichen wie 
-				// Leerzeichen, Zeilenumbruch, Tabulatorzeichen etc. überspringt
-
+	char ch;	// beachten Sie, das >> Whitespace-Zeichen wie 
+	cin >> ch;	// Leerzeichen, Zeilenumbruch, Tabulatorzeichen etc. überspringt
+				
 	switch(ch){
 	case ';': // für "Ausgeben"
 	case 'q': // für "Verlassen"
 	case '(': case ')': case '-': case '*': case '/': case '%':
+	case '+': case '{': case '}':
 		return Token(ch);	// jedes Zeichen repräsentiert sich selbst
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
@@ -97,10 +95,9 @@ double primary()
 	switch(t.kind){
 	case '(': 
 	{	double d = expression();
-		t = get_token();
+		t = ts.get();
 		if( t.kind != ')' ) error("')' erwartet");
 		return d;
-		
 	}
 	case '8': // wir verwenden '8' zur Repräsentation
 		return t.value;
@@ -129,7 +126,6 @@ double term()
 			break;
 		}
 		break;
-
 		default: 
 			ts.putback(t); // stelle t wieder zurück in den Token-Stream	
 			return left;
@@ -167,7 +163,6 @@ int main()
 		while(cin)
 			cout << "=" << expression() << '\n';
 		keep_window_open();
-
 	}
 	catch(exception &e){
 		cerr << e.what() << endl;
