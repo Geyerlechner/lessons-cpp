@@ -86,7 +86,7 @@ double term()
 double expression()
 {
 	double left = term(); // lies einen Term und werte ihn aus
-	Token t = get_token();		// lies das nächste Token ein
+	Token t = ts.get(); // lies das nächste Token ein
 
 	while(true){
 	
@@ -99,7 +99,9 @@ double expression()
 			left -= term(); // werte Term aus und subtrahiere
 			t = get_token();
 			break;
-		default: return left;			 // liefere den Wert des Ausdrucks zurück 
+		default: 
+			ts.pushback(t);	// stelel t wieder zurück in den Token-Stream	
+			return left;	// liefere den Wert des Ausdrucks zurück 
 	}
 
 	
