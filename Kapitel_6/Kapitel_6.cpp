@@ -62,6 +62,7 @@ Token Token_stream::get()
 	switch(ch){
 	case ';': // für "Ausgeben"
 	case 'q': // für "Verlassen"
+	case '!': // für "Fakulätsoperator
 	case '(': case ')': case '-': case '*': case '/': case '%':
 	case '+': case '{': case '}':
 		return Token(ch);	// jedes Zeichen repräsentiert sich selbst
@@ -72,6 +73,7 @@ Token Token_stream::get()
 		cin.putback(ch); // lege die Ziffer zurück in den Eigabestream
 		double val;
 		cin >> val;
+		cout << "Print " << val;
 		return Token('8', val); // '8' repräsentiert "eine Zahl"
 	}
 	default:
@@ -125,6 +127,17 @@ double term()
 			t = ts.get();
 			break;
 		}
+		break;
+		case '!':
+		{
+			int lval = left;
+			for (int i = left - 1; i > 0; i--) lval = lval * i;		
+
+			cout << lval;
+			return lval;
+		}
+			
+			return 1;
 		break;
 		default: 
 			ts.putback(t); // stelle t wieder zurück in den Token-Stream	
