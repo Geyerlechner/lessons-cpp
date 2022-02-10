@@ -1,7 +1,10 @@
 #include <iostream>
 #include "../std_lib_facilities.h"
 
-
+// get_token() // liest Zeichen ein und zerlegt sie in Token
+// expression() // Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
+// term() //Term-Regel; behandelt *, / und % auf
+// primary() // Faktor-Regel; behandelt Zahlen und Klammern ruft, expression() und get_token() auf
 
 class Token {
 public:	
@@ -11,10 +14,16 @@ public:
 	Token(char ch, double val) : kind(ch), value(val) {} // erstelle ein Token aus einem char und einem double
 };
 
-// get_token() // liest Zeichen ein und zerlegt sie in Token
-// expression() // Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
-// term() //Term-Regel; behandelt *, / und % auf
-// primary() // Faktor-Regel; behandelt Zahlen und Klammern ruft, expression() und get_token() auf
+double expression()
+{
+	double left = expression(); // lies einen Ausdruck ein und werte ihn aus
+	Token t = get_token();		// lies das nächste Token ein
+	switch(t.kind){				// stelle fest, welcher Art das Token ist
+	case '+': return left + term(); // lies ein Term ein und werte ihn aus, führe dann eine Addition aus
+	case '-': return left + term();  // lies einen Term ein und werte ihn aus, führe dann eine Subtrakion aus
+	default: return left;			 // liefere den Wert des Ausdrucks zurück 
+	}
+}
 
 
 int main()
