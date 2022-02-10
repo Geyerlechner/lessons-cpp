@@ -477,6 +477,7 @@ void lesson12()
 	sum_weekdays.resize( weekdays.size() );
 	
 	int dayNum;
+	
 	std::string day;
 	
 	cout << "Beenden mit end\n";
@@ -497,15 +498,12 @@ void lesson12()
 		cout << "Wochentag/Zahl: ";
 	}
 
-
-	cout << "----------------------------\n";
-	cout << "Sunday:  "   << sum_weekdays.at(6) << "\n" <<
-			"Monday:  "   << sum_weekdays.at(0) << "\n" <<
-			"Tuesday: "   << sum_weekdays.at(1) << "\n" <<
-			"Wednesday: " << sum_weekdays.at(2) << "\n" <<
-			"Thursday: "  << sum_weekdays.at(3) << "\n" << 
-			"Friday: "    << sum_weekdays.at(4) << "\n" <<
-			"Saturday: "  << sum_weekdays.at(5) << "\n";
+	dayNum = 0;
+	for(auto week : weekdays)
+	{
+		cout << week << " " <<  sum_weekdays.at(dayNum) << endl;
+		dayNum++;
+	}
 }
 
 int main()
