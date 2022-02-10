@@ -179,11 +179,14 @@ double expression()
 int main()
 try
 {
+    cout << "Willkommen zu unserem einfachen Taschenrechnerprogamm. \n";
+    cout << "Unterstuetzen Operatoren: *, +, -, /, (, ) \n";
+    cout << "Beenden Sie mit x und == fuer die Ausgabe\n";
     while (cin) {
         Token t = ts.get();
      
-        if (t.kind == 'q') break; // 'q' for quit
-        if (t.kind == ';')        // ';' for "print now"
+        if (t.kind == 'x') break; // 'q' for quit
+        if (t.kind == '==')        // ';' for "print now"
             cout << "=" << expression() << '\n';
         else
             ts.putback(t);
