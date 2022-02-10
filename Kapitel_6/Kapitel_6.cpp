@@ -14,6 +14,24 @@ public:
 	Token(char ch, double val) : kind(ch), value(val) {} // erstelle ein Token aus einem char und einem double
 };
 
+double primary()
+{
+	Token t = get_token();
+	switch(t.kind){
+	case '(': 
+	{	double d = expression();
+		t = get_token();
+		if( t.kind != ')' ) error("')' erwartet");
+		return d;
+		
+	}
+	case '8': // wir verwenden '8' zur Repräsentation
+		return t.value;
+	default:
+		error("Faktor erwaret");
+	}
+}
+
 double term()
 {
 	double left = primary();
