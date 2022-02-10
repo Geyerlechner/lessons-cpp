@@ -506,6 +506,56 @@ void lesson12()
 	}
 }
 
+void lesson12_count_weekdays()
+{
+	auto toLower = []( std::string s ) 
+	{
+		std::transform( s.begin(), s.end(), s.begin(), []( auto c ){ return std::tolower(c); } );
+		return s;
+	};
+	auto iStartsWith = [ &toLower ]( const std::string& str, const std::string& match ) 
+	{
+		auto strLowercase = toLower( str );
+		auto matchLowercase = toLower( match );
+		return strLowercase.find( matchLowercase ) == std::string::size_type( 0 ); // 0 -> starts with matchLowercase
+	};
+
+	vector< string > weekdays = { "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag" };
+	vector< int > sumWeekdays;
+	sumWeekdays.resize( weekdays.size() );
+	
+	std::string endMarker = "end";
+	std::cout << "Beenden mit " + endMarker + "\n";
+
+	auto commandHelp = [](){ std::cout << "Wochentag/Anzahl: "; };
+	
+	commandHelp();
+	int dayNum;
+	std::string match;
+	while( cin >> match >> dayNum )
+	{
+		if( match == endMarker ) 
+			break;
+
+		auto foundWeekday = std::find_if( weekdays.begin(), weekdays.end(), [&]( const auto& weekday ) { return iStartsWith( weekday, match ); });
+
+		if( foundWeekday == weekdays.end() )
+			continue;
+
+		int iSumWeekdays = (int)( foundWeekday - weekdays.begin() );
+		sumWeekdays[ iSumWeekdays ] += dayNum;
+		commandHelp();
+	}
+
+	auto iWeekday = 0;
+	for( const auto& weekday : weekdays )
+	{
+		std::cout << weekday << " " <<  sumWeekdays.at( iWeekday ) << std::endl;
+		iWeekday++;
+	}
+}
+
+
 int main()
 {
 	 lesson12();
