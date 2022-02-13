@@ -506,7 +506,47 @@ void lesson12()
 	}
 }
 
+// Fakultät
+int Fakultat(int num)
+{
+	for (int i = num - 1; i > 0; i--) 
+		num = num * i;		
+	return num;
+}
+
+// Kombinationen berechnen
+void lesson13()
+{
+	// Variationen mit Wiederholung
+	int n = 0;
+	int r = 0;
+	int input = 0;
+	cin >> input;
+	cout << "Geben Sie zwei Zahlen ein: ";
+	cin >> n >> r;
+
+	switch(input)
+	{
+	case 1: // Kombinatorik
+		cout << Fakultat( n ) / ( Fakultat( r ) * Fakultat( n - r ) );
+	break;
+	case 2: // Zahlenkombinationen 
+		// 4 Z x 10 M
+		int val = r;
+		for (int  i = 1; i <= 4; i++)
+		{
+			cout << i << endl;
+			val *= r;
+		}
+		cout << "Print: " << val;
+	break;
+	}
+
+
+
+}
+
 int main()
 {
-	 lesson12();
+	lesson13();
 }
