@@ -49,7 +49,7 @@ Token Token_Stream::get()
 	{
 	case ';': // für "Ausgeben"
 	case 'q': // für "Verlassen"
-	case '(': case ')': case '+': case '-': case '*': case '/': case '%':
+	case '{': case '}':  case '(': case ')': case '+': case '-': case '*': case '/': case '%':
 		return Token(ch); // jedes Zeichen repräsentiert sich selbst
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
@@ -105,6 +105,13 @@ double primary()
 		double d = expression();
 		t = ts.get();
 		if(t.kind != ')') error("erwartet");
+		return d;
+	}
+	case '{': //behandle '{' Ausdruck '}'
+	{
+		double d = expression();
+		t = ts.get();
+		if(t.kind != '}') error("erwartet");
 		return d;
 	}
 	case '8': 
@@ -167,21 +174,27 @@ double expression()
 	
 }
 
+
 int main()
 {
+	std::cout << "--------------------------------------------------------" << std::endl;
+	std::cout << "Willkommne zu unserem einfachen Taschenrechnerprogramm." << std::endl;
+	std::cout << "--------------------------------------------------------" << std::endl;
+
 	double val = 0;
 	try {
 		
 		while(cin){
-		
 			Token t = ts.get();
 
 			if(t.kind == 'q') break; // 'q' für verlassen
-			if(t.kind == ';') // ';' für "jetzt ausgeben"
-				cout  << "=" << val << '\n';
+			if(t.kind == ';'){ // ';' für "jetzt ausgeben"
+				cout  << "Ergebnis: " << val << '\n';
+				cout << "Eingabe: ";
+			}
 			else 
 				ts.putback(t);
-			val = expression();
+			val = expression();	
 		}
 
 		keep_window_open();
@@ -266,4 +279,5 @@ int main()
 
 	//}
 	//error("ungueltiger Ausdruck");
+	return 0;
 }

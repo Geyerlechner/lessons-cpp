@@ -18,5 +18,8 @@
     <ClCompile Include="Taschenrechner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="calculator02buggy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
