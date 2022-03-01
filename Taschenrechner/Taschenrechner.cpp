@@ -13,6 +13,14 @@ public:
 	Token(char ch, double val) : kind(ch), value(val) {} // initialisiere t2 so, dass t2.kind = '8'
 };
 
+class Name_value {
+
+public:
+	vector<string> kind;
+	vector<double> value;
+
+};
+
 class Token_Stream {
 public:
 	Token_Stream();	// erstelle einen Token_stream, der aus cin liest
@@ -165,6 +173,10 @@ int main()
 	for (int i = 7 - 1; i > 0; i--) lval = lval * i;		
 	cout << lval;
 	*/
+
+	Name_value s;
+	s.kind.push_back("+");
+	s.value.push_back(20.4);
 
 	double val = 0;
 	try {
