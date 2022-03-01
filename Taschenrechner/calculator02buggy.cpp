@@ -76,8 +76,8 @@ Token Token_stream::get()
     cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
 
     switch (ch) {
-    case ';':    // for "print"
-    case 'q':    // for "quit"
+    case '=':    // for "print"
+    case 'x':    // for "quit"
     case '(': case ')': case '+': case '-': case '*': case '/':
         return Token(ch);        // let each character represent itself
     case '.':
@@ -180,21 +180,24 @@ double expression()
 
 //------------------------------------------------------------------------------
 
-int main_fixed()
+int main()
 try
 {
     double val = 0;
 
 	std::cout << "--------------------------------------------------------" << std::endl;
 	std::cout << "Willkommne zu unserem einfachen Taschenrechnerprogramm." << std::endl;
+    std::cout << "Operatoren: *, x, /, +, -" << std::endl;
 	std::cout << "--------------------------------------------------------" << std::endl;
 
     while (cin) {
         Fixed::Token t = Fixed::ts.get();
 
-        if (t.kind == 'q') break; // 'q' for quit
-        if (t.kind == ';')        // ';' for "print now"
-            cout << "=" << val << '\n';
+        if (t.kind == 'x') break; // 'q' for quit
+        if (t.kind == '='){        // ';' for "print now"
+        	cout  << "Ergebnis: " << val << '\n';
+			cout << "Eingabe: ";
+        }
         else
             Fixed::ts.putback(t);
         val = Fixed::expression();
