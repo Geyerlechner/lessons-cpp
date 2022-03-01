@@ -521,9 +521,12 @@ void lesson13()
 	int n = 0;
 	int r = 0;
 	int input = 0;
+	
 	cin >> input;
-	cout << "Geben Sie zwei Zahlen ein: ";
-	cin >> n >> r;
+	cout << "Geben Sie zwei Zahlen ein: \nAnzahl: ";
+	cin >> n;
+	cout << "Max Zahlen: ";
+	cin >> r;
 
 	switch(input)
 	{
@@ -531,18 +534,16 @@ void lesson13()
 		cout << Fakultat( n ) / ( Fakultat( r ) * Fakultat( n - r ) );
 	break;
 	case 2: // Zahlenkombinationen 
-		// 4 Z x 10 M
-		int val = r;
-		for (int  i = 1; i <= 4; i++)
-		{
-			cout << i << endl;
-			val *= r;
-		}
-		cout << "Print: " << val;
+
+	  // 4 Z x 10 M
+	  int val = r;
+	  
+	  for (int  i = 1; i < n; i++)
+	  	val *= r;
+	  
+	  cout << "Print: " << val;
 	break;
 	}
-
-
 
 }
 

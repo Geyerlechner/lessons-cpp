@@ -1,6 +1,8 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <string>
+
 //Seite: 94 -  98
  
 //Seite: 101
@@ -60,14 +62,36 @@ template <typename t> void move(std::vector<t>& v, size_t oldIndex, size_t newIn
 
 int main()
 {
-    std::vector<int> v{ 1, 2, 3, 4, 5 };  
 
-    move(v, 2, v.size()-1);
-    move(v, 1, v.size()-1);
+  std::cout << "Please, enter a number or a word: ";
+  char c = std::cin.get();
 
-    for ( auto e : v )
-    {
-        std::cout << e << " ";
-    }
+  if ( (c >= '0') && (c <= '9') )
+  {
+    int n;
+    std::cin.putback (c);
+    std::cin >> n;
+    std::cout << "You entered a number: " << n << '\n';
+  }
+  else
+  {
+    std::string str;
+    std::cin.putback (c);
+    std::getline (std::cin,str);
+    std::cout << "You entered a word: " << str << '\n';
+  }
+
+  system("pause");
+
+
+    //std::vector<int> v{ 1, 2, 3, 4, 5 };  
+
+    //move(v, 2, v.size()-1);
+    //move(v, 1, v.size()-1);
+
+    //for ( auto e : v )
+    //{
+    //    std::cout << e << " ";
+    //}
 
 }
