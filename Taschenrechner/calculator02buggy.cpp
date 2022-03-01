@@ -185,6 +185,10 @@ try
 {
     double val = 0;
 
+	std::cout << "--------------------------------------------------------" << std::endl;
+	std::cout << "Willkommne zu unserem einfachen Taschenrechnerprogramm." << std::endl;
+	std::cout << "--------------------------------------------------------" << std::endl;
+
     while (cin) {
         Fixed::Token t = Fixed::ts.get();
 
