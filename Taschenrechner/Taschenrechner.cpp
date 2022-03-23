@@ -125,8 +125,13 @@ double term()
 		case '%':
 		{	double d = primary(); 
 			int i1 = int(left);
+			if( i1 != left ) error("linker Operand von % ist keien ganze Zahl");
 			int i2 = int(d);
-			return i1%i2;
+			if( i2 != d ) error("rechter Operand von % ist keien ganze Zahl");
+			if( i2 == 0 ) error("%: Division durch null");
+			left = i1%i2;
+			t = ts.get();
+			break;
 		}
 			break;
 		default:
