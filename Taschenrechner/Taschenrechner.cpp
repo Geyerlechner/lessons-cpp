@@ -13,22 +13,14 @@ public:
 	Token(char ch, double val) : kind(ch), value(val) {} // initialisiere t2 so, dass t2.kind = '8'
 };
 
-class Name_value {
-
-public:
-	vector<string> kind;
-	vector<double> value;
-
-};
-
 class Token_Stream {
 public:
-	Token_Stream();	// erstelle einen Token_stream, der aus cin liest
-	Token get();	// lies ein Token ein
-	void putback(Token t); // lege ein Token zurück
+	Token_Stream();			// erstelle einen Token_stream, der aus cin liest
+	Token get();			// lies ein Token ein
+	void putback(Token t);	// lege ein Token zurück
 private:
-	bool full; // befindet sich ein Token im Puffer?
-	Token buffer; // hier legen wir ein Token ab, das mit putback() zurückgestellt wurde
+	bool full;				// befindet sich ein Token im Puffer?
+	Token buffer;			// hier legen wir ein Token ab, das mit putback() zurückgestellt wurde
 };
 
 Token_Stream::Token_Stream() : full(false), buffer(0) // kein Token im Puffer
@@ -130,6 +122,13 @@ double term()
 			for (int i = left - 1; i > 0; i--) lval = lval * i;		
 			return lval;
 		}
+		case '%':
+		{	double d = primary(); 
+			int i1 = int(left);
+			int i2 = int(d);
+			return i1%i2;
+		}
+			break;
 		default:
 			ts.putback(t); // stelle t wieder zurück in den Token-Stream
 			return left;
@@ -163,20 +162,13 @@ double expression()
 }
 
 
+
+
 int main()
 {
 	std::cout << "--------------------------------------------------------" << std::endl;
 	std::cout << "Willkommne zu unserem einfachen Taschenrechnerprogramm." << std::endl;
 	std::cout << "--------------------------------------------------------" << std::endl;
-
-	/*int lval = 7;
-	for (int i = 7 - 1; i > 0; i--) lval = lval * i;		
-	cout << lval;
-	*/
-
-	Name_value s;
-	s.kind.push_back("+");
-	s.value.push_back(20.4);
 
 	double val = 0;
 	try {
