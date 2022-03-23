@@ -54,16 +54,23 @@ Token Token_Stream::get()
 
 	switch (ch)
 	{
-	case ';': // für "Ausgeben"
-	case 'q': // für "Verlassen"
+	case print: // für "Ausgeben"
+	case quit: // für "Verlassen"
 	case '!':
-	case '{': case '}': case '(': case ')': case '+': case '-': case '*': case '/': case '%':
+	case '{': 
+	case '}': 
+	case '(': 
+	case ')': 
+	case '+': 
+	case '-': 
+	case '*': 
+	case '/': 
+	case '%':
 		return Token(ch); // jedes Zeichen repräsentiert sich selbst
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
 	case '5': case '6': case '7': case '8': case '9':
-	{
-		cin.putback(ch); // lege die Ziffer zurück in den Eingabestream
+	{	cin.putback(ch); // lege die Ziffer zurück in den Eingabestream
 		double val; 
 		cin >> val; // lies ein Gleitkommerzahl
 		return Token(number, val); // '8' repäsentiert "eine Zahl"
