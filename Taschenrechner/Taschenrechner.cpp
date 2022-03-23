@@ -123,12 +123,9 @@ double term()
 			return lval;
 		}
 		case '%':
-		{	double d = primary(); 
-			int i1 = int(left);
-			if( i1 != left ) error("linker Operand von % ist keien ganze Zahl");
-			int i2 = int(d);
-			if( i2 != d ) error("rechter Operand von % ist keien ganze Zahl");
-			if( i2 == 0 ) error("%: Division durch null");
+		{	int i1 = narrow_cast<int>(left);
+			int i2 = narrow_cast<int>(term());
+			if(i2 == 0 ) error("%: Division durch null");
 			left = i1%i2;
 			t = ts.get();
 			break;
