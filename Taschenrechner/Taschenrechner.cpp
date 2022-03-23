@@ -13,6 +13,7 @@ const string result = "= ";	  // Zeigt an, dass danach ein Ergebnis flogt
 
 // Funktionen, die den Grammatikregeln entsprechen:
 class Token {
+
 public:
 	char kind;
 	double value;
@@ -21,10 +22,13 @@ public:
 };
 
 class Token_Stream {
+
 public:
 	Token_Stream();			// erstelle einen Token_stream, der aus cin liest
 	Token get();			// lies ein Token ein
 	void putback(Token t);	// lege ein Token zurück
+	void ignore(char c);	// verwirft Zeichen bis und einschließlich des nächsten Vorkommens von c
+
 private:
 	bool full;				// befindet sich ein Token im Puffer?
 	Token buffer;			// hier legen wir ein Token ab, das mit putback() zurückgestellt wurde
@@ -81,7 +85,23 @@ Token Token_Stream::get()
 }
 
 Token_Stream ts;
- 
+
+void Token_Stream::ignore( char c ) // c repräsentiert die gesuchte Token-Kategorie
+{
+	// erster Blick in den Puffer
+	if(full && c == buffer.kind){
+		full = false;
+		return;
+	}
+
+	full = false;
+
+	// jetzt die Eingabe durchsuchen
+	char ch = 0;
+	while( cin >> ch )
+		if( ch == c ) return;
+}
+
 // Faktor-Regel; behandelt Zahlen und Klammern ruft expression() und get_token() auf
 double primary()
 {
