@@ -3,6 +3,11 @@
 
 double expression();
 
+const char number = '8';  // t.kind == number bedeutet, dass t ein Zahlen-Token ist
+						  
+const char quit  =	'q';  // t.kind == quit  bedeutet, dass t ein Verlassen-Token ist
+const char print =	';';  // t.kind == print bedeutet, dass t ein Ausgeben-Token ist
+
 
 // Funktionen, die den Grammatikregeln entsprechen:
 class Token {
@@ -59,7 +64,7 @@ Token Token_Stream::get()
 		cin.putback(ch); // lege die Ziffer zurück in den Eingabestream
 		double val; 
 		cin >> val; // lies ein Gleitkommerzahl
-		return Token('8', val); // '8' repäsentiert "eine Zahl"
+		return Token(number, val); // '8' repäsentiert "eine Zahl"
 	}
 	default:
 		error("Ungueltiges Token");
@@ -88,7 +93,7 @@ double primary()
 		if(t.kind != '}') error("erwartet");
 		return d;
 	}
-	case '8': 
+	case number: 
 		return t.value;
 	default:
 		error("Faktor erwaret");
