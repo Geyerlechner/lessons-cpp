@@ -177,15 +177,31 @@ double expression()
 	
 }
 
+void clean_up_code()	// Naiver Ansatz
+{
+	while(true){		// überspringen, bis wir einen Ausgabe-Befehl entdecken
+		Token t = ts.get();
+		if( t.kind == print ) return;
+	}
+}
+
 void calculate() // Schleife zur Auswertung der Ausdrücke
 {
 	while( cin ){ 
-		cout << prompt;
-		Token t = ts.get(); 
-		while( t.kind == print ) t = ts.get();	// Zuerst alle Ausgaben-Befehle verwerfen
-		if( t.kind == quit ) return;			// Programm verlassen
-		ts.putback(t);
-		cout << result << expression() << endl;
+		try
+		{
+			cout << prompt;
+			Token t = ts.get(); 
+			while( t.kind == print ) t = ts.get();	// Zuerst alle Ausgaben-Befehle verwerfen
+			if( t.kind == quit ) return;			// Programm verlassen
+			ts.putback(t);
+			cout << result << expression() << endl;
+		}
+		catch(exception& e)
+		{
+			cerr << e.what() << endl;				// Fehlermeldung ausgeben
+			clean_up_code();			
+		}
 	}
 }
 
