@@ -177,34 +177,48 @@ int main()
 	std::cout << "Willkommne zu unserem einfachen Taschenrechnerprogramm." << std::endl;
 	std::cout << "--------------------------------------------------------" << std::endl;
 
-	double val = 0;
-	try {
+	while( cin ){
+		cout << "> ";
+		Token t = ts.get();
+		while(t.kind == print) t = ts.get();
 		
-		while(cin){
-			Token t = ts.get();
-
-			if(t.kind == 'q') break; // 'q' für verlassen
-			if(t.kind == ';'){ // ';' für "jetzt ausgeben"
-				cout  << "Ergebnis: " << val << '\n';
-				cout << "Eingabe: ";
-			}
-			else 
-				ts.putback(t);
-			val = expression();	
+		if(t.kind == quit) {
+			keep_window_open();
+			return 0;
 		}
+		ts.putback(t);
+		cout << "= " << expression() << endl;
 
-		keep_window_open();
-	
-	}catch (exception &e)
-	{
-		cerr << e.what() << endl;
-		keep_window_open();
-		return 1;
-	}catch(...){
-		cerr << "Ausnahme \n";
-		keep_window_open();
-		return 2;
 	}
+
+	//double val = 0;
+	//try {
+	//	
+	//	while(cin){
+	//		Token t = ts.get();
+
+	//		if(t.kind == 'q') break; // 'q' für verlassen
+	//		if(t.kind == ';'){ // ';' für "jetzt ausgeben"
+	//			cout  << "Ergebnis: " << val << '\n';
+	//			cout << "Eingabe: ";
+	//		}
+	//		else 
+	//			ts.putback(t);
+	//		val = expression();	
+	//	}
+
+	//	keep_window_open();
+	//
+	//}catch (exception &e)
+	//{
+	//	cerr << e.what() << endl;
+	//	keep_window_open();
+	//	return 1;
+	//}catch(...){
+	//	cerr << "Ausnahme \n";
+	//	keep_window_open();
+	//	return 2;
+	//}
 
 
 
