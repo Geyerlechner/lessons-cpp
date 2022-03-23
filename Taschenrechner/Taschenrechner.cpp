@@ -3,11 +3,13 @@
 
 double expression();
 
-const char number = '8';  // t.kind == number bedeutet, dass t ein Zahlen-Token ist
-						  
-const char quit  =	'q';  // t.kind == quit  bedeutet, dass t ein Verlassen-Token ist
-const char print =	';';  // t.kind == print bedeutet, dass t ein Ausgeben-Token ist
+const char number = '8';	  // t.kind == number bedeutet, dass t ein Zahlen-Token ist
+							  
+const char quit  =	'q';	  // t.kind == quit  bedeutet, dass t ein Verlassen-Token ist
+const char print =	';';	  // t.kind == print bedeutet, dass t ein Ausgeben-Token ist
 
+const string prompt = "> ";	   
+const string result = "= ";	  // Zeigt an, dass danach ein Ergebnis flogt
 
 // Funktionen, die den Grammatikregeln entsprechen:
 class Token {
@@ -168,7 +170,17 @@ double expression()
 	
 }
 
-
+void calculate() // Schleife zur Auswertung der Ausdrücke
+{
+	while( cin ){ 
+		cout << prompt;
+		Token t = ts.get(); 
+		while( t.kind == print ) t = ts.get();	// Zuerst alle Ausgaben-Befehle verwerfen
+		if( t.kind == quit ) return;			// Programm verlassen
+		ts.putback(t);
+		cout << result << expression() << endl;
+	}
+}
 
 
 int main()
@@ -177,18 +189,23 @@ int main()
 	std::cout << "Willkommne zu unserem einfachen Taschenrechnerprogramm." << std::endl;
 	std::cout << "--------------------------------------------------------" << std::endl;
 
-	while( cin ){
-		cout << "> ";
-		Token t = ts.get();
-		while(t.kind == print) t = ts.get();
-		
-		if(t.kind == quit) {
-			keep_window_open();
-			return 0;
-		}
-		ts.putback(t);
-		cout << "= " << expression() << endl;
-
+	try 
+	{
+		calculate();
+		keep_window_open();
+		return 0;
+	}
+	catch( runtime_error& e )
+	{
+		cerr << e.what() << endl;
+		keep_window_open("~~");
+		return 1;
+	}
+	catch(...)
+	{
+		cerr << "Ausnahme \n";
+		keep_window_open("~~");
+		return 2;
 	}
 
 	//double val = 0;
