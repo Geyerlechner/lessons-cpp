@@ -11,7 +11,9 @@ const char print =	';';	  // t.kind == print bedeutet, dass t ein Ausgeben-Token
 const string prompt = "> ";	   
 const string result = "= ";	  // Zeigt an, dass danach ein Ergebnis flogt
 
-// Funktionen, die den Grammatikregeln entsprechen:
+/*
+* Funktionen, die den Grammatikregeln entsprechen:
+*/
 class Token {
 
 public:
@@ -97,7 +99,10 @@ Token Token_Stream::get()
 
 Token_Stream ts;
 
-void Token_Stream::ignore( char c ) // c repräsentiert die gesuchte Token-Kategorie
+/*
+* c repräsentiert die gesuchte Token-Kategorie 
+*/
+void Token_Stream::ignore( char c )
 {
 	// erster Blick in den Puffer
 	if(full && c == buffer.kind){
@@ -113,7 +118,9 @@ void Token_Stream::ignore( char c ) // c repräsentiert die gesuchte Token-Katego
 		if( ch == c ) return;
 }
 
-// Faktor-Regel; behandelt Zahlen und Klammern ruft expression() und get_token() auf
+/*
+* Faktor-Regel; behandelt Zahlen und Klammern ruft expression() und get_token() auf
+*/ 
 double primary()
 {
 	Token t = ts.get();
@@ -138,6 +145,18 @@ double primary()
 	default:
 		error("Faktor erwaret");
 
+	}
+}
+
+double statment()
+{
+	Token t = ts.get();
+	switch( t.kind ) {
+	case let:
+		return declaration();
+	default:
+		ts.putback(t);
+	return expression();
 	}
 }
 
@@ -208,7 +227,9 @@ double term()
 	}
 }
 
-// Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
+/*
+* Ausdruck-Regel; behandelt + und - ruft term() und get_token() auf
+*/
 double expression()
 {
 	double left = term(); //lies einen Term und werte ihn aus
@@ -241,7 +262,10 @@ void clean_up_code()	// Naiver Ansatz
 	}
 }
 
-void calculate() // Schleife zur Auswertung der Ausdrücke
+/*
+* Schleife zur Auswertung der Ausdrücke
+*/
+void calculate() 
 {
 	while( cin ){ 
 		try
@@ -251,7 +275,7 @@ void calculate() // Schleife zur Auswertung der Ausdrücke
 			while( t.kind == print ) t = ts.get();	// Zuerst alle Ausgaben-Befehle verwerfen
 			if( t.kind == quit ) return;			// Programm verlassen
 			ts.putback(t);
-			cout << result << expression() << endl;
+			cout << result << statment() << endl;
 		}
 		catch(exception& e)
 		{
@@ -261,6 +285,26 @@ void calculate() // Schleife zur Auswertung der Ausdrücke
 	}
 }
 
+/* NOTE
+* Nicht initialisierte Variablen werden nicht unterstützt. Für die
+* oben angeführten, logischen Operationen haben wir die Funktionen is_declared() und define_name() definiert
+*/
+bool is_declared( string var )
+{
+	for (int i = 0; i < var_table.size(); ++i)
+		if( var_table[i].name == var ) return true;
+	return false;
+}
+
+/*
+* füge (var, val) in var_table ein
+*/
+double define_name( string var, double val )
+{
+	if( is_declared( var ) ) error(var, " doppelt deklariert");
+	var_table.push_back(Variable(var,val));
+	return val;
+}
 
 int main()
 {
