@@ -21,6 +21,17 @@ public:
 	Token(char ch, double val) : kind(ch), value(val) {} // initialisiere t2 so, dass t2.kind = '8'
 };
 
+class Variable
+{
+public:
+	string name;
+	double value;
+	Variable( string n, double v ) : name( n ), value( v ) { }
+};
+
+
+vector<Variable> var_table;
+
 class Token_Stream {
 
 public:
@@ -130,7 +141,32 @@ double primary()
 	}
 }
 
-// Term-Regel behandelt *, /, ! und % ruft primary() und get_token() auf
+/*
+* liefert den Wert der Variablen mit dem Namen s zurück
+*/
+double get_value( string s )
+{
+	for ( int i = 0; i < var_table.size(); i++ )
+		if( var_table[i].name == s ) return var_table[i].value;
+	error("get: nicht definierte Variable ", s);
+}
+
+/*
+* weist der Variablen mit dem Namen s den Wert d zu
+*/
+void set_value( string s, double d )
+{
+	for( int i = 0; i < var_table.size(); ++i )
+		if( var_table[i].name == s ) {
+			var_table[i].value = d;
+		return;
+	}
+	error("set: nicht definierte Variable ", s);	
+}
+
+/*
+* Term-Regel behandelt *, /, ! und % ruft primary() und get_token() auf
+*/
 double term()
 {
 	double left = primary();
@@ -152,8 +188,8 @@ double term()
 		}
 		case '!':
 		{
-			int lval = left;
-			for (int i = left - 1; i > 0; i--) lval = lval * i;		
+			double lval = left;
+			for (double i = left - 1; i > 0; i--) lval = lval * i;		
 			return lval;
 		}
 		case '%':
