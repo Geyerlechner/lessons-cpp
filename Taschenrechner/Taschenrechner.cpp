@@ -2,40 +2,41 @@
 #include "../std_lib_facilities.h"
 
 double expression();
+double declaration();
 
-const char number = '8';	  // t.kind == number bedeutet, dass t ein Zahlen-Token ist
-							  
-const char quit  =	'q';	  // t.kind == quit  bedeutet, dass t ein Verlassen-Token ist
-const char print =	';';	  // t.kind == print bedeutet, dass t ein Ausgeben-Token ist
+const char number	 =  '8';		// t.kind == number bedeutet, dass t ein Zahlen-Token ist
+const char quit		 =	'q';		// t.kind == quit  bedeutet, dass t ein Verlassen-Token ist
+const char print	 =	';';		// t.kind == print bedeutet, dass t ein Ausgeben-Token ist
+const char name		 =	'a';		// Name-Token
+const char let		 =	'L';		// Deklaration-Token
 
-const string prompt = "> ";	   
-const string result = "= ";	  // Zeigt an, dass danach ein Ergebnis flogt
+const string declkey =	"let";		// Schlüsselwort für Deklarationen 
+const string prompt	 =	"> ";	   
+const string result  =	"= ";	    // Zeigt an, dass danach ein Ergebnis flogt
+
 
 /*
 * Funktionen, die den Grammatikregeln entsprechen:
 */
-class Token {
-
-public:
-	char kind;
-	double value;
-	Token(char ch) : kind(ch), value(0) {}	// initialisiere t1 so, dass t1.kind = '+'
-	Token(char ch, double val) : kind(ch), value(val) {} // initialisiere t2 so, dass t2.kind = '8'
+struct Token {
+	char	kind;
+	double	value;
+	string	name;
+	Token( char ch ) : kind( ch ), value(0) { }
+	Token( char ch, double val ) : kind( ch ), value( val ) { }
+	Token( char ch, string n )   : kind( ch ), name( n ) { }
 };
 
-class Variable
-{
+class Variable {
 public:
 	string name;
 	double value;
 	Variable( string n, double v ) : name( n ), value( v ) { }
 };
 
-
 vector<Variable> var_table;
 
 class Token_Stream {
-
 public:
 	Token_Stream();			// erstelle einen Token_stream, der aus cin liest
 	Token get();			// lies ein Token ein
@@ -54,7 +55,7 @@ Token_Stream::Token_Stream() : full(false), buffer(0) // kein Token im Puffer
 void Token_Stream::putback(Token t)
 {
 	if(full) error("putback(): Zurueckstellen nicht mieglich, Puffer voll");
-	buffer = t; //kopiere t in den Puffer
+	buffer = t;	 // Kopiere t in den Puffer
 	full = true; // Puffer ist jetzt voll
 }
 
@@ -69,32 +70,65 @@ Token Token_Stream::get()
 	char ch;
 	cin >> ch;
 
-	switch (ch)
-	{
-	case print: // für "Ausgeben"
-	case quit: // für "Verlassen"
+	switch(ch) {
+	case quit:
+	case print:
 	case '!':
-	case '{': 
-	case '}': 
-	case '(': 
-	case ')': 
-	case '+': 
-	case '-': 
-	case '*': 
-	case '/': 
+	case '{':
+	case '}':
+	case '(':
+	case ')':
+	case '+':
+	case '-':
+	case '*':
+	case '/':
 	case '%':
-		return Token(ch); // jedes Zeichen repräsentiert sich selbst
+		return Token( ch );
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
 	case '5': case '6': case '7': case '8': case '9':
-	{	cin.putback(ch); // lege die Ziffer zurück in den Eingabestream
-		double val; 
-		cin >> val; // lies ein Gleitkommerzahl
-		return Token(number, val); // '8' repäsentiert "eine Zahl"
+	{ cin.putback(ch);
+	  double val;
+	  cin >> val;
+	  return Token(number, val);
 	}
 	default:
+	  if( isalpha(ch) ) {
+		cin.putback(ch);
+		string s;
+		cin >> s;
+		if( s == declkey ) return Token(let);	// Schlüsselwort für Deklarationen
+		return Token( name, s );
+	  }
 		error("Ungueltiges Token");
 	}
+
+	//switch (ch)
+	//{
+	//case print: // für "Ausgeben"
+	//case quit: // für "Verlassen"
+	//case '!':
+	//case '{': 
+	//case '}': 
+	//case '(': 
+	//case ')': 
+	//case '+': 
+	//case '-': 
+	//case '*': 
+	//case '/': 
+	//case '%':
+	//	return Token(ch); // jedes Zeichen repräsentiert sich selbst
+	//case '.':
+	//case '0': case '1': case '2': case '3': case '4':
+	//case '5': case '6': case '7': case '8': case '9':
+	//{	cin.putback(ch); // lege die Ziffer zurück in den Eingabestream
+	//	double val; 
+	//	cin >> val; // lies ein Gleitkommerzahl
+	//	return Token(number, val); // '8' repäsentiert "eine Zahl"
+	//}
+	//default:
+	//	error("Ungueltiges Token");
+	//}
 }
 
 Token_Stream ts;
@@ -168,6 +202,7 @@ double get_value( string s )
 	for ( int i = 0; i < var_table.size(); i++ )
 		if( var_table[i].name == s ) return var_table[i].value;
 	error("get: nicht definierte Variable ", s);
+	return;
 }
 
 /*
@@ -181,6 +216,7 @@ void set_value( string s, double d )
 		return;
 	}
 	error("set: nicht definierte Variable ", s);	
+	return;
 }
 
 /*
@@ -232,8 +268,8 @@ double term()
 */
 double expression()
 {
-	double left = term(); //lies einen Term und werte ihn aus
-	Token t = ts.get(); // liest das nächste Token aus dem Token-Stream ein
+	double left = term(); // lies einen Term und werte ihn aus
+	Token t = ts.get();   // liest das nächste Token aus dem Token-Stream ein
 	
 	while(true){
 	 switch (t.kind)
@@ -262,6 +298,11 @@ void clean_up_code()	// Naiver Ansatz
 	}
 }
 
+void clean_up_mess()
+{
+	ts.ignore(print);
+}
+
 /*
 * Schleife zur Auswertung der Ausdrücke
 */
@@ -280,7 +321,7 @@ void calculate()
 		catch(exception& e)
 		{
 			cerr << e.what() << endl;				// Fehlermeldung ausgeben
-			clean_up_code();			
+			clean_up_mess();			
 		}
 	}
 }
@@ -304,6 +345,25 @@ double define_name( string var, double val )
 	if( is_declared( var ) ) error(var, " doppelt deklariert");
 	var_table.push_back(Variable(var,val));
 	return val;
+}
+
+/*
+* angenommen, wir haben "let" gesehen
+* behandle: name = ausdruck
+* deklariere eine Variable namens "name" mit dem Anfangswert "ausdruck"
+*/
+double declaration()
+{
+	Token t = ts.get();
+	if( t.kind != name ) error("die Deklaration erwartet einen Namen");
+	string var_name = t.name;
+
+	Token t2 = ts.get();
+	if( t2.kind != '=' ) error("= fehlt in der Deklaration von ", var_name);
+
+	double d = expression();
+	define_name(var_name, d);
+	return d;
 }
 
 int main()
